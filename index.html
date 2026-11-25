@@ -6,13 +6,13 @@
   <title>Захиргааны эрх зүйн сургалт ба сорилын платформ</title>
   <style>
     :root {
-      --bg: #f4f7fb;
+      --bg: #f6f8fc;
       --card: #ffffff;
       --text: #0f172a;
       --muted: #475569;
       --border: #e2e8f0;
       --primary: #1d4ed8;
-      --primary-dark: #1e3a8a;
+      --primary-dark: #172554;
       --primary-soft: #eff6ff;
       --success-bg: #ecfdf5;
       --success-border: #10b981;
@@ -20,6 +20,17 @@
       --error-bg: #fef2f2;
       --error-border: #ef4444;
       --error-text: #991b1b;
+
+      --c1: #ef4444;
+      --c1-bg: #fef2f2;
+      --c2: #f59e0b;
+      --c2-bg: #fffbeb;
+      --c3: #06b6d4;
+      --c3-bg: #ecfeff;
+      --c4: #1d4ed8;
+      --c4-bg: #eff6ff;
+      --c5: #8b5cf6;
+      --c5-bg: #f5f3ff;
     }
 
     * {
@@ -42,29 +53,74 @@
       margin: 0 auto;
     }
 
-    .topbar {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 20px 24px;
+    .hero-banner {
+      background: linear-gradient(125deg, #0f172a 0%, #1e3a8a 55%, #2563eb 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 26px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px rgba(30, 58, 138, 0.16);
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      gap: 20px;
     }
 
-    .brand h1 {
-      font-size: 1.3rem;
+    .hero-content {
+      max-width: 680px;
+    }
+
+    .hero-content h1 {
+      font-size: 1.45rem;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    .hero-content p {
+      font-size: 0.94rem;
+      color: #dbeafe;
+      margin-bottom: 14px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-light {
+      background: #ffffff;
       color: var(--primary-dark);
+      border: none;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.15s ease;
     }
 
-    .brand p {
-      font-size: 0.92rem;
-      color: var(--muted);
-      margin-top: 4px;
+    .btn-light:hover {
+      background: #eff6ff;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-light {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .stats {
@@ -74,14 +130,15 @@
     }
 
     .pill {
-      background: var(--primary-soft);
-      color: var(--primary-dark);
-      border: 1px solid #bfdbfe;
-      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 7px 14px;
       border-radius: 999px;
       font-size: 0.85rem;
       font-weight: 700;
       white-space: nowrap;
+      backdrop-filter: blur(6px);
     }
 
     .nav-tabs {
@@ -100,6 +157,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: 0.15s ease;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
     }
 
     .tab-btn.active {
@@ -111,15 +169,15 @@
     .guide-banner {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 22px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      margin-bottom: 22px;
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
     }
 
     .guide-banner h2 {
       font-size: 1.08rem;
-      color: var(--primary-dark);
+      color: var(--text);
       margin-bottom: 8px;
     }
 
@@ -136,9 +194,10 @@
     }
 
     .step-box {
-      background: #f8fafc;
+      background: #ffffff;
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-top: 4px solid var(--step-color, var(--primary));
+      border-radius: 14px;
       padding: 14px;
       font-size: 0.85rem;
       display: flex;
@@ -146,8 +205,22 @@
       gap: 6px;
     }
 
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      background: var(--step-bg, var(--primary-soft));
+      color: var(--step-color, var(--primary));
+      margin-bottom: 2px;
+    }
+
     .step-box strong {
-      color: var(--primary-dark);
+      color: var(--text);
       font-size: 0.88rem;
       min-height: 2.3rem;
     }
@@ -165,14 +238,22 @@
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 22px;
-      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       gap: 18px;
+      position: relative;
+      overflow: hidden;
     }
+
+    .card-accent-1 { border-top: 4px solid var(--c1); }
+    .card-accent-2 { border-top: 4px solid var(--c2); }
+    .card-accent-3 { border-top: 4px solid var(--c3); }
+    .card-accent-4 { border-top: 4px solid var(--c4); }
+    .card-accent-5 { border-top: 4px solid var(--c5); }
 
     .card-top {
       display: flex;
@@ -185,12 +266,16 @@
       align-self: flex-start;
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 4px 10px;
+      padding: 4px 11px;
       border-radius: 999px;
-      background: var(--primary-soft);
-      color: var(--primary);
       margin-bottom: 10px;
     }
+
+    .badge-1 { background: var(--c1-bg); color: #b91c1c; }
+    .badge-2 { background: var(--c2-bg); color: #b45309; }
+    .badge-3 { background: var(--c3-bg); color: #0e7490; }
+    .badge-4 { background: var(--c4-bg); color: #1d4ed8; }
+    .badge-5 { background: var(--c5-bg); color: #6d28d9; }
 
     .card h3 {
       font-size: 1.06rem;
@@ -208,19 +293,17 @@
     .meta-tag {
       margin-top: 14px;
       font-size: 0.84rem;
-      color: var(--primary-dark);
+      color: var(--text);
       background: #f8fafc;
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 10px 12px;
       line-height: 1.5;
-      word-spacing: normal;
-      letter-spacing: normal;
     }
 
     .btn {
       border: none;
-      border-radius: 10px;
+      border-radius: 11px;
       padding: 11px 16px;
       font-weight: 600;
       cursor: pointer;
@@ -240,8 +323,23 @@
     }
 
     .btn-primary:hover {
-      background: var(--primary-dark);
+      background: #1e40af;
     }
+
+    .btn-c1 { background: #dc2626; color: #fff; }
+    .btn-c1:hover { background: #b91c1c; }
+
+    .btn-c2 { background: #d97706; color: #fff; }
+    .btn-c2:hover { background: #b45309; }
+
+    .btn-c3 { background: #0891b2; color: #fff; }
+    .btn-c3:hover { background: #0e7490; }
+
+    .btn-c4 { background: #1d4ed8; color: #fff; }
+    .btn-c4:hover { background: #1e40af; }
+
+    .btn-c5 { background: #7c3aed; color: #fff; }
+    .btn-c5:hover { background: #6d28d9; }
 
     .btn-secondary {
       background: #f1f5f9;
@@ -290,7 +388,8 @@
       margin-top: 16px;
       padding: 16px 18px;
       border-radius: 12px;
-      background: var(--primary-soft);
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
       border-left: 4px solid var(--primary);
       font-size: 0.92rem;
     }
@@ -305,7 +404,7 @@
     .law-detail {
       margin-top: 8px;
       padding-top: 8px;
-      border-top: 1px dashed #93c5fd;
+      border-top: 1px dashed #cbd5e1;
       color: #1e293b;
     }
 
@@ -319,18 +418,18 @@
     }
 
     .score-ring {
-      width: 140px;
-      height: 140px;
+      width: 146px;
+      height: 146px;
       border-radius: 50%;
-      background: conic-gradient(var(--primary) var(--pct, 0%), #e2e8f0 0);
+      background: conic-gradient(#7c3aed var(--pct, 0%), #e2e8f0 0);
       display: grid;
       place-items: center;
       margin: 14px auto 18px;
     }
 
     .score-inner {
-      width: 110px;
-      height: 110px;
+      width: 114px;
+      height: 114px;
       border-radius: 50%;
       background: #fff;
       display: flex;
@@ -338,7 +437,7 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      color: var(--primary-dark);
+      color: #4c1d95;
     }
 
     .hidden {
@@ -373,10 +472,14 @@
 </head>
 <body>
   <div class="container">
-    <div class="topbar">
-      <div class="brand">
+    <div class="hero-banner">
+      <div class="hero-content">
         <h1>Захиргааны эрх зүйн платформ</h1>
-        <p>ЗЕХ-ийн 26, 27, 28 дугаар зүйл • Сонсох ажиллагааны үе шат, кейс симуляци ба 10 асуулттай сорил</p>
+        <p>ЗЕХ-ийн 26, 27, 28 дугаар зүйл • Сонсох ажиллагааны 5 үе шат, кейс симуляци ба 10 асуулттай сорил</p>
+        <div class="hero-actions">
+          <button class="btn-light" id="hero-start-case-btn" type="button">Кейс эхлүүлэх</button>
+          <button class="btn-outline-light" id="hero-start-quiz-btn" type="button">Сорил бөглөх (10)</button>
+        </div>
       </div>
       <div class="stats">
         <div class="pill" id="stat-cases">Кейс: 0/5</div>
@@ -398,78 +501,83 @@
           <strong>Зорилго:</strong> Захиргааны акт гаргахын өмнө хэргийн бодит нөхцөл байдлыг зөв, бүрэн тогтоох, эрх, хууль ёсны ашиг сонирхол нь хөндөгдөж буй этгээдийн тайлбар, санал, нотлох баримтыг сонсож хууль ёсны, үндэслэл бүхий шийдвэр гаргахад оршино.
         </p>
         <div class="steps-grid">
-          <div class="step-box">
-            <strong>1. Мэдэгдэл илгээх</strong>
+          <div class="step-box" style="--step-color:#ef4444;--step-bg:#fef2f2;">
+            <div class="step-num">01</div>
+            <strong>Мэдэгдэл илгээх</strong>
             <span>Асуудлын агуулга, болзошгүй шийдвэрийн нөлөө, санал өгөх хугацаа ба журмыг талуудад албан ёсоор мэдэгдэнэ.</span>
           </div>
-          <div class="step-box">
-            <strong>2. Санал хүсэлт хүлээн авах</strong>
+          <div class="step-box" style="--step-color:#f59e0b;--step-bg:#fffbeb;">
+            <div class="step-num">02</div>
+            <strong>Санал хүсэлт хүлээн авах</strong>
             <span>Иргэн, хуулийн этгээдийн тайлбар, санал, нотлох баримтыг хүлээн авч эрхээ хамгаалах боломж олгоно.</span>
           </div>
-          <div class="step-box">
-            <strong>3. Сонсох үйл явдал</strong>
+          <div class="step-box" style="--step-color:#06b6d4;--step-bg:#ecfeff;">
+            <div class="step-num">03</div>
+            <strong>Сонсох үйл явдал</strong>
             <span>Байр суурь, тайлбарыг анхааралтай сонсож, явц, оролцогчид, саналыг тэмдэглэлд тусган баримтжуулна.</span>
           </div>
-          <div class="step-box">
-            <strong>4. Шийдвэр гаргах</strong>
+          <div class="step-box" style="--step-color:#1d4ed8;--step-bg:#eff6ff;">
+            <div class="step-num">04</div>
+            <strong>Шийдвэр гаргах</strong>
             <span>Цугларсан баримт, тайлбар, хуулийн заалтыг судлан эцсийн шийдвэр гаргах эсвэл ЗЕХ 28-р зүйлийн үндэслэлийг шалгана.</span>
           </div>
-          <div class="step-box">
-            <strong>5. Шийдвэрийг мэдээлэх</strong>
+          <div class="step-box" style="--step-color:#8b5cf6;--step-bg:#f5f3ff;">
+            <div class="step-num">05</div>
+            <strong>Шийдвэрийг мэдээлэх</strong>
             <span>Гаргасан шийдвэрийг холбогдох талуудад албан ёсоор мэдэгдэж, гомдол/нэхэмжлэл гаргах эрхийн хүрээг ойлгуулна.</span>
           </div>
         </div>
       </div>
 
       <div class="grid">
-        <div class="card">
+        <div class="card card-accent-1">
           <div class="card-top">
-            <span class="badge">ЗЕХ 26, 27-р зүйл • Кейс 1</span>
+            <span class="badge badge-1">ЗЕХ 26, 27-р зүйл • Кейс 1</span>
             <h3>Мэдэгдэл илгээлгүй зөвшөөрөл хүчингүй болгосон нь</h3>
             <p>Захиргааны байгууллага иргэнд олгосон зөвшөөрлийг хүчингүй болгохдоо 1-р үе шат болох мэдэгдэл илгээх, санал тайлбар авах ажиллагааг огт явуулаагүй маргаан.</p>
             <div class="meta-tag"><strong>Гол алхам:</strong> Мэдэгдлийн агуулга ба сонсох ажиллагаа (ЗЕХ 26, 27)</div>
           </div>
-          <button class="btn btn-primary start-case-btn" type="button" data-case-index="0">Кейсийг эхлүүлэх</button>
+          <button class="btn btn-c1 start-case-btn" type="button" data-case-index="0">Кейсийг эхлүүлэх</button>
         </div>
 
-        <div class="card">
+        <div class="card card-accent-2">
           <div class="card-top">
-            <span class="badge">ЗЕХ 27-р зүйл • Кейс 2</span>
+            <span class="badge badge-2">ЗЕХ 27-р зүйл • Кейс 2</span>
             <h3>Тэмдэглэл ба нотлох баримтыг орхигдуулсан нь</h3>
             <p>Оролцогч тайлбар, баримт гаргасан боловч сонсох үйл явцын тэмдэглэл хөтлөөгүй, гаргасан санал хүсэлтийг шийдвэр гаргахдаа харгалзан үзээгүй нөхцөл байдал.</p>
             <div class="meta-tag"><strong>Гол алхам:</strong> Санал хүлээн авах ба тэмдэглэлд тусгах зүйлс (ЗЕХ 27)</div>
           </div>
-          <button class="btn btn-primary start-case-btn" type="button" data-case-index="1">Кейсийг эхлүүлэх</button>
+          <button class="btn btn-c2 start-case-btn" type="button" data-case-index="1">Кейсийг эхлүүлэх</button>
         </div>
 
-        <div class="card">
+        <div class="card card-accent-3">
           <div class="card-top">
-            <span class="badge">ЗЕХ 28-р зүйл • Кейс 3</span>
+            <span class="badge badge-3">ЗЕХ 28-р зүйл • Кейс 3</span>
             <h3>Сонсох ажиллагаанаас татгалзах үндэслэл</h3>
             <p>Нийтийн ашиг сонирхолд шууд хохирол учруулах нөхцөл эсвэл хуульд заасан тусгай үндэслэлээр сонсох ажиллагаа явуулахаас татгалзах эрх зүйн шалгуур.</p>
             <div class="meta-tag"><strong>Гол алхам:</strong> Татгалзах үндэслэл ба хязгаарлалт (ЗЕХ 28)</div>
           </div>
-          <button class="btn btn-primary start-case-btn" type="button" data-case-index="2">Кейсийг эхлүүлэх</button>
+          <button class="btn btn-c3 start-case-btn" type="button" data-case-index="2">Кейсийг эхлүүлэх</button>
         </div>
 
-        <div class="card">
+        <div class="card card-accent-4">
           <div class="card-top">
-            <span class="badge">ЗЕХ 26–28, 5-р үе шат • Кейс 4</span>
+            <span class="badge badge-4">ЗЕХ 26–28, 5-р үе шат • Кейс 4</span>
             <h3>Шийдвэр гаргах ба мэдээлэх үе шатын зөрчил</h3>
             <p>Сонсох ажиллагааны дараа шийдвэр гаргахдаа оролцогчийн тайлбарыг үнэлээгүй, мөн шийдвэрийг холбогдох этгээдэд зохих ёсоор мэдээлээгүй эрх зүйн маргаан.</p>
             <div class="meta-tag"><strong>Гол алхам:</strong> Шийдвэр гаргах ба мэдээлэх (ЗЕХ 26–28, ЗХШХШТХ)</div>
           </div>
-          <button class="btn btn-primary start-case-btn" type="button" data-case-index="3">Кейсийг эхлүүлэх</button>
+          <button class="btn btn-c4 start-case-btn" type="button" data-case-index="3">Кейсийг эхлүүлэх</button>
         </div>
 
-        <div class="card">
+        <div class="card card-accent-5">
           <div class="card-top">
-            <span class="badge">ЗЕХ 26–28, ЗХШХШТХ • Кейс 5</span>
+            <span class="badge badge-5">ЗЕХ 26–28, ЗХШХШТХ • Кейс 5</span>
             <h3>Эс үйлдэхүй ба сонсох ажиллагааны үүрэг</h3>
             <p>Тусгай зөвшөөрөл олгох өргөдлийг хугацаанд нь шийдвэрлээгүй эс үйлдэхүйн үед нөхцөл байдлыг тодруулах, сонсох ажиллагаа явуулах болон нэхэмжлэл гаргах эрх.</p>
             <div class="meta-tag"><strong>Гол алхам:</strong> Эс үйлдэхүйн хяналт ба нэхэмжлэлийн эрх</div>
           </div>
-          <button class="btn btn-primary start-case-btn" type="button" data-case-index="4">Кейсийг эхлүүлэх</button>
+          <button class="btn btn-c5 start-case-btn" type="button" data-case-index="4">Кейсийг эхлүүлэх</button>
         </div>
       </div>
     </section>
@@ -487,7 +595,7 @@
         <h3 style="text-align:center;min-height:auto;">Нийт гүйцэтгэл</h3>
         <div class="score-ring" id="score-ring" style="--pct: 0%;">
           <div class="score-inner">
-            <span id="score-pct">0%</span>
+            <span id="score-pct" style="text-align:center;">0%</span>
             <small style="font-size:0.75rem;color:#64748b;">Ахиц</small>
           </div>
         </div>
@@ -554,313 +662,3 @@
             "Оролцогчийн тайлбарыг уншихгүйгээр урьдчилан бэлдсэн шийдвэрийг шууд хэвээр баталж болно."
           ],
           correct: 0,
-          law: "ЗЕХ-ийн 26, 27 дугаар зүйл ба холбогдох зохицуулалт: Сонсох ажиллагаагаар цугларсан санал, тайлбар, нотлох баримтыг үнэлж шийдвэр гаргах ба гаргасан шийдвэрийг холбогдох талуудад зохих журмын дагуу мэдээлнэ.",
-          detail: "Шийдвэрийг албан ёсоор мэдээлснээр оролцогч тал шийдвэрийн агуулга, үндэслэлтэй танилцаж, хуульд заасан гомдол гаргах эсвэл ЗХШХШТХ-ийн дагуу шүүхэд нэхэмжлэл гаргах эрхээ хэрэгжүүлэх боломжтой болдог."
-        },
-        {
-          level: "ЗЕХ 26–28, ЗХШХШТХ",
-          title: "Эс үйлдэхүй ба сонсох ажиллагааны зохицуулалт",
-          situation: "Хуулийн этгээд тусгай зөвшөөрөл хүссэн хүсэлт гаргасан боловч байгууллага хугацаанд нь шийдвэр гаргаагүй, мөн нөхцөл байдлыг тодруулах, сонсох ажиллагаа явуулалгүй удаашруулжээ.",
-          options: [
-            "Хугацаанд нь шийдвэр гаргаагүй эс үйлдэхүйн улмаас эрх, ашиг сонирхол нь зөрчигдсөн этгээд ЗХШХШТХ-ийн дагуу эс үйлдэхүйг хууль бус болохыг тогтоолгох, зохих акт гаргахыг даалгах нэхэмжлэл гаргаж болно.",
-            "Байгууллага ямар ч ажиллагаа хийгээгүй бол маргаан үүсэхгүй.",
-            "Зөвхөн татгалзсан хариу бичгээр өгсөн үед л шүүхэд хандана."
-          ],
-          correct: 0,
-          law: "ЗЕХ-ийн 26–28 дугаар зүйл: Захиргааны байгууллага шийдвэр гаргах ажиллагааны хүрээнд нөхцөл байдлыг тодруулж, зохицуулалтын дагуу ажиллах үүрэгтэй.",
-          detail: "ЗХШХШТХ-ийн дагуу захиргааны байгууллагын хууль бус эс үйлдэхүйн эсрэг нэхэмжлэл гаргаснаар хуульд заасан чиг үүрэг, шийдвэр гаргах ажиллагааг хуулийн хүрээнд хэрэгжүүлэх эрх зүйн хамгаалалт хэрэгжинэ."
-        }
-      ];
-
-      const quizData = [
-        {
-          q: "1. Сонсох ажиллагааны үндсэн зорилго юу вэ? (ЗЕХ 26-р зүйл)",
-          options: [
-            "Захиргааны акт гаргахын өмнө хэргийн нөхцөл байдлыг зөв тогтоож, эрх, ашиг сонирхол нь хөндөгдөх этгээдийн тайлбар, саналыг сонсож үндэслэл бүхий шийдвэр гаргах",
-            "Шүүхийн хэлэлцүүлгийг бүрэн орлох",
-            "Зөвхөн байгууллагын дотоод тайлан бэлтгэх"
-          ],
-          correct: 0,
-          law: "ЗЕХ-ийн 26 дугаар зүйл: Захиргааны актаар шийдвэрлэх асуудалд хамаарах нөхцөл байдлыг бодитоор тогтоох зорилгоор оролцогчийн тайлбар, санал, нотлох баримтыг сонсох журам юм.",
-          detail: "Ингэснээр захиргааны акт нь талуудын байр суурь, бодит баримтад тулгуурласан, эрх зүйн хувьд үндэслэлтэй гарах нөхцөл бүрддэг."
-        },
-        {
-          q: "2. Мэдэгдэл илгээх үе шатанд захиргааны байгууллага юуг тусгах ёстой вэ?",
-          options: [
-            "Шийдвэрлэх асуудлын агуулга, нөлөөлөх нөхцөл байдал, тайлбар/санал өгөх хугацаа ба хэлбэр, холбогдох мэдээллийг тодорхой мэдэгдэнэ",
-            "Зөвхөн шийдвэр гарсны дараах огноог бичнэ",
-            "Ямар ч мэдээлэлгүйгээр хоосон зарлал тараана"
-          ],
-          correct: 0,
-          law: "ЗЕХ-ийн 26, 27 дугаар зүйл: Оролцогч өөрийн байр сууриа бэлтгэж, эрхээ хамгаалах бодит боломжтой байхын тулд мэдэгдлийн агуулга ойлгомжтой, тодорхой байх шаардлагатай.",
-          detail: "Мэдэгдлийн агуулга дутуу буюу тодорхойгүй байх нь оролцогчийн тайлбар, нотлох баримт гаргах эрхийг хязгаарлах эрсдэлтэй."
-        },
-        {
-          q: "3. Санал хүсэлт хүлээн авах үе шатанд оролцогч ямар эрхээ хэрэгжүүлдэг вэ?",
-          options: [
-            "Өөрийн байр суурь, тайлбар, санал болон холбогдох нотлох баримтыг гаргаж, эрх, хууль ёсны ашиг сонирхлоо хамгаалах",
-            "Зөвхөн байгууллагын саналыг зөвшөөрөх гарын үсэг зурах",
-            "Төлбөр төлж байж үг хэлэх"
-          ],
-          correct: 0,
-          law: "ЗЕХ-ийн 26, 27 дугаар зүйл: Хувь хүн болон хуулийн этгээд өөрийн байр суурийг илэрхийлэх, тайлбар, санал, баримт ирүүлэх боломжоор хангагдана.",
-          detail: "Энэ үе шатанд ирүүлсэн тайлбар, баримт нь захиргааны байгууллагад урьд өмнө мэдэгдээгүй байсан чухал нөхцөл байдлыг илрүүлэх ач холбогдолтой."
-        },
-        {
-          q: "4. Сонсох үйл явцын тэмдэглэлд ямар зүйлсийг тусгах нь чухал вэ? (ЗЕХ 27-р зүйл)",
-          options: [
-            "Сонсох ажиллагаа явуулсан огноо, хэлбэр, оролцогчид, гаргасан тайлбар/санал, хүлээн авсан баримтын тэмдэглэл ба баталгаажуулалт",
-            "Зөвхөн цаг агаарын мэдээ болон албан хаагчийн хувийн сэтгэгдэл",
-            "Тэмдэглэлд юу ч бичихгүйгээр зөвхөн хариуцлага хүлээлгэх"
-          ],
-          correct: 0,
-          law: "ЗЕХ-ийн 27 дугаар зүйл: Сонсох ажиллагааны явц, үр дүнг баримтжуулж тэмдэглэл үйлдэх нь журмын биелэлтийг баталгаажуулна.",
-          detail: "Тэмдэглэлд оролцогчийн санал, нотлох баримт тодорхой туссанаар хожим хяналтын болон шүүхийн шатанд асуудлыг бодитой шалгахад дөхөм болдог."
-        },
-        {
-          q: "5. Шийдвэр гаргах үе шатанд захиргааны байгууллага ямар алхам хийх вэ?",
-          options: [
-            "Оролцогчдын тайлбар, санал, цугларсан нотлох баримт болон хуулийн заалтыг судлан үнэлж эцсийн шийдвэр гаргана",
-            "Оролцогчдын тайлбарыг уншилгүйгээр санамсаргүй сонголтоор шийдвэр гаргана",
-            "Зөвхөн нэг талын мэдээллийг үнэлээд бусдыг орхигдуулна"
-          ],
-          correct: 0,
-          law: "ЗЕХ-ийн 26, 27 дугаар зүйл ба захиргааны үйл ажиллагааны зарчим: Сонсох ажиллагаагаар илэрсэн нөхцөл байдал, баримтыг тал бүрээс нь судалж шийдвэр гаргана.",
-          detail: "Хэрэв сонсох ажиллагаагаар шинэ баримт, нөхцөл байдал тогтоогдвол түүнд үндэслэн шийдвэрийн агуулгыг зохих ёсоор тусгах шаардлагатай."
-        },
-        {
-          q: "6. Шийдвэрийг мэдээлэх үе шат ямар ач холбогдолтой вэ?",
-          options: [
-            "Гаргасан шийдвэрийг холбогдох этгээдэд албан ёсоор хүргэж, эрх зүйн үр дагавар болон маргах/гомдол гаргах эрхийн хүрээг тодорхой болгодог",
-            "Шийдвэрийг нууцалж зөвхөн дотооддоо хадгалдаг",
-            "Зөвхөн шүүхэд хэрэг шилжсэн үед л мэдээлдэг"
-          ],
-          correct: 0,
-          law: "ЗЕХ ба ЗХШХШТХ: Шийдвэрийг зохих этгээдэд албан ёсоор мэдээлснээр эрх зүйн актын мэдэгдэл хүргэгдсэн нөхцөл бүрдэж, эрхээ хамгаалах хугацаа, журам тодорхой болдог.",
-          detail: "Мэдээллийг зохих ёсоор хүргэх нь маргааныг тодорхой, ил тод шийдвэрлэхэд чухал үүрэгтэй."
-        },
-        {
-          q: "7. ЗЕХ-ийн 28 дугаар зүйл ямар зохицуулалттай вэ?",
-          options: [
-            "Сонсох ажиллагаа явуулахаас татгалзах үндэслэлүүдийг зохицуулна",
-            "Шүүхийн шийдвэр гүйцэтгэх журмыг зохицуулна",
-            "Иргэний эрх зүйн гэрээ байгуулах журмыг зохицуулна"
-          ],
-          correct: 0,
-          law: "ЗЕХ-ийн 28 дугаар зүйл: Хуульд заасан үндэслэлүүдийн дагуу сонсох ажиллагаа явуулахаас татгалзах нөхцөл, хязгаарлалтыг тогтооно.",
-          detail: "Татгалзах үндэслэлийг хэрэглэхдээ хуульд заасан нөхцөл бодитоор бүрдсэн эсэхийг нягталж үндэслэлтэй хэрэглэх шаардлагатай."
-        },
-        {
-          q: "8. Захиргааны актыг хүчингүй болгуулахад голлон ямар нэхэмжлэлийн төрөл хамаарах вэ? (ЗХШХШТХ)",
-          options: [
-            "Захиргааны акт гаргахаас татгалзсаныг маргах",
-            "Захиргааны актыг хүчингүй болгуулах нэхэмжлэл",
-            "Иргэний эрх зүйн гэрээний үүргийн маргаан"
-          ],
-          correct: 1,
-          law: "ЗХШХШТХ: Хууль бус захиргааны актын улмаас эрх, хууль ёсны ашиг сонирхол нь зөрчигдсөн этгээд уг актыг хүчингүй болгуулах нэхэмжлэл гаргана.",
-          detail: "Хэрэв акт гарсан бөгөөд эрх зүйн үйлчлэлийг нь зогсоож, зөрчигдсөн эрхийг сэргээх шаардлагатай бол хүчингүй болгуулах нэхэмжлэлд хамаарна."
-        },
-        {
-          q: "9. Захиргааны байгууллагын хууль бус эс үйлдэхүй гэдэгт юу ойлгогдох вэ?",
-          options: [
-            "Хууль болон захиргааны актаар хүлээсэн чиг үүрэг, шийдвэр гаргах үүргээ хугацаанд нь биелүүлээгүй байдал",
-            "Иргэн шүүхэд нэхэмжлэл гаргаагүй байдал",
-            "УИХ-аас шинэ хууль баталсан байдал"
-          ],
-          correct: 0,
-          law: "ЗЕХ ба ЗХШХШТХ: Захиргааны байгууллага эрх зүйн актаар хүлээсэн чиг үүргээ хэрэгжүүлэхгүй буюу зохих шийдвэр гаргахгүй хугацаа хэтрүүлсэн нь эс үйлдэхүй болно.",
-          detail: "Эс үйлдэхүйн улмаас эрх, ашиг сонирхол нь зөрчигдсөн этгээд хууль бус эс үйлдэхүйг тогтоолгох, зохих акт гаргахыг даалгах нэхэмжлэл гаргах боломжтой."
-        },
-        {
-          q: "10. Урьдчилан шийдвэрлэх ажиллагаа (гомдол гаргах журам) ямар ач холбогдолтой вэ?",
-          options: [
-            "Захиргааны байгууллагын дотоод хяналтаар алдааг эрт засах боломж олгодог",
-            "Шүүхийн шийдвэрийг хүчингүй болгодог",
-            "Зөвхөн эрүүгийн хэрэгт хэрэглэгддэг"
-          ],
-          correct: 0,
-          law: "ЗЕХ ба ЗХШХШТХ: Хуульд заасан тохиолдолд захиргааны актад гаргах гомдлыг эрх бүхий этгээдээр урьдчилан хянуулах журам үйлчилнэ.",
-          detail: "Энэ нь маргааныг шүүхээс өмнө засаг захиргааны шатанд шуурхай шийдвэрлэх, хууль бус шийдвэрийг цаг алдалгүй залруулах зорилготой."
-        }
-      ];
-
-      let currentCaseIdx = 0;
-      let currentQuizIdx = 0;
-      const caseSolved = new Set();
-      const quizCorrect = new Set();
-
-      function switchTab(tab) {
-        document.querySelectorAll(".tab-btn").forEach((btn) => {
-          btn.classList.toggle("active", btn.dataset.tab === tab);
-        });
-        ["dashboard", "cases", "quiz", "summary"].forEach((id) => {
-          const sec = document.getElementById("tab-" + id);
-          if (sec) sec.classList.toggle("hidden", id !== tab);
-        });
-        if (tab === "cases") renderCase();
-        if (tab === "quiz") renderQuiz();
-        if (tab === "summary") renderSummary();
-      }
-
-      function startCase(idx) {
-        currentCaseIdx = idx;
-        switchTab("cases");
-      }
-
-      function renderCase() {
-        const item = casesData[currentCaseIdx];
-        const box = document.getElementById("case-box");
-        box.innerHTML = `
-          <div>
-            <span class="badge">${item.level} • Кейс ${currentCaseIdx + 1}/${casesData.length}</span>
-            <h3>${item.title}</h3>
-            <p style="margin-top:8px;color:var(--text);">${item.situation}</p>
-            <div class="options" id="case-options">
-              ${item.options.map((opt, i) => `
-                <button class="option-btn case-opt-btn" type="button" data-opt-index="${i}">${opt}</button>
-              `).join("")}
-            </div>
-            <div id="case-feedback"></div>
-          </div>
-          <div class="actions-row">
-            <button class="btn btn-secondary" id="prev-case-btn" type="button">Өмнөх</button>
-            <button class="btn btn-primary" id="next-case-btn" type="button">Дараагийн кейс</button>
-          </div>
-        `;
-
-        box.querySelectorAll(".case-opt-btn").forEach((btn) => {
-          btn.addEventListener("click", () => answerCase(Number(btn.dataset.optIndex)));
-        });
-        document.getElementById("prev-case-btn").addEventListener("click", prevCase);
-        document.getElementById("next-case-btn").addEventListener("click", nextCase);
-      }
-
-      function answerCase(choiceIdx) {
-        const item = casesData[currentCaseIdx];
-        const btns = document.querySelectorAll("#case-options .option-btn");
-        btns.forEach((btn, i) => {
-          btn.disabled = true;
-          if (i === item.correct) btn.classList.add("correct");
-          else if (i === choiceIdx) btn.classList.add("wrong");
-        });
-        if (choiceIdx === item.correct) caseSolved.add(currentCaseIdx);
-        updateStats();
-
-        document.getElementById("case-feedback").innerHTML = `
-          <div class="callout">
-            <strong>${choiceIdx === item.correct ? "Зөв эрх зүйн дүгнэлт" : "Хуулийн зохицуулалтын дэлгэрэнгүй тайлбар"}</strong>
-            <p style="color:var(--text);">${item.law}</p>
-            <div class="law-detail">${item.detail}</div>
-          </div>
-        `;
-      }
-
-      function prevCase() {
-        currentCaseIdx = (currentCaseIdx - 1 + casesData.length) % casesData.length;
-        renderCase();
-      }
-
-      function nextCase() {
-        currentCaseIdx = (currentCaseIdx + 1) % casesData.length;
-        renderCase();
-      }
-
-      function renderQuiz() {
-        const item = quizData[currentQuizIdx];
-        const box = document.getElementById("quiz-box");
-        box.innerHTML = `
-          <div>
-            <span class="badge">Сорил • Асуулт ${currentQuizIdx + 1}/${quizData.length}</span>
-            <h3>${item.q}</h3>
-            <div class="options" id="quiz-options">
-              ${item.options.map((opt, i) => `
-                <button class="option-btn quiz-opt-btn" type="button" data-opt-index="${i}">${opt}</button>
-              `).join("")}
-            </div>
-            <div id="quiz-feedback"></div>
-          </div>
-          <div class="actions-row">
-            <button class="btn btn-secondary" id="prev-quiz-btn" type="button">Өмнөх</button>
-            <button class="btn btn-primary" id="next-quiz-btn" type="button">Дараагийн асуулт</button>
-          </div>
-        `;
-
-        box.querySelectorAll(".quiz-opt-btn").forEach((btn) => {
-          btn.addEventListener("click", () => answerQuiz(Number(btn.dataset.optIndex)));
-        });
-        document.getElementById("prev-quiz-btn").addEventListener("click", prevQuiz);
-        document.getElementById("next-quiz-btn").addEventListener("click", nextQuiz);
-      }
-
-      function answerQuiz(choiceIdx) {
-        const item = quizData[currentQuizIdx];
-        const btns = document.querySelectorAll("#quiz-options .option-btn");
-        btns.forEach((btn, i) => {
-          btn.disabled = true;
-          if (i === item.correct) btn.classList.add("correct");
-          else if (i === choiceIdx) btn.classList.add("wrong");
-        });
-        if (choiceIdx === item.correct) quizCorrect.add(currentQuizIdx);
-        updateStats();
-
-        document.getElementById("quiz-feedback").innerHTML = `
-          <div class="callout">
-            <strong>${choiceIdx === item.correct ? "Зөв хариулт • Эрх зүйн тайлбар" : "Тайлбар ба хуулийн зохицуулалт"}</strong>
-            <p style="color:var(--text);">${item.law}</p>
-            <div class="law-detail">${item.detail}</div>
-          </div>
-        `;
-      }
-
-      function prevQuiz() {
-        currentQuizIdx = (currentQuizIdx - 1 + quizData.length) % quizData.length;
-        renderQuiz();
-      }
-
-      function nextQuiz() {
-        currentQuizIdx = (currentQuizIdx + 1) % quizData.length;
-        renderQuiz();
-      }
-
-      function updateStats() {
-        document.getElementById("stat-cases").textContent = `Кейс: ${caseSolved.size}/${casesData.length}`;
-        document.getElementById("stat-quiz").textContent = `Сорил: ${quizCorrect.size}/${quizData.length}`;
-      }
-
-      function renderSummary() {
-        const total = casesData.length + quizData.length;
-        const done = caseSolved.size + quizCorrect.size;
-        const pct = Math.round((done / total) * 100);
-        document.getElementById("score-ring").style.setProperty("--pct", pct + "%");
-        document.getElementById("score-pct").textContent = pct + "%";
-        document.getElementById("summary-text").textContent =
-          `Та нийт ${total} даалгавраас ${done} амжилттай гүйцэтгэлээ (Кейс: ${caseSolved.size}/${casesData.length}, Сорил: ${quizCorrect.size}/${quizData.length}).`;
-      }
-
-      function resetProgress() {
-        caseSolved.clear();
-        quizCorrect.clear();
-        updateStats();
-        renderSummary();
-      }
-
-      document.querySelectorAll(".tab-btn").forEach((btn) => {
-        btn.addEventListener("click", () => switchTab(btn.dataset.tab));
-      });
-
-      document.querySelectorAll(".start-case-btn").forEach((btn) => {
-        btn.addEventListener("click", () => startCase(Number(btn.dataset.caseIndex)));
-      });
-
-      const resetBtn = document.getElementById("reset-progress-btn");
-      if (resetBtn) resetBtn.addEventListener("click", resetProgress);
-
-      const backBtn = document.getElementById("back-dashboard-btn");
-      if (backBtn) backBtn.addEventListener("click", () => switchTab("dashboard"));
-
-      updateStats();
-    })();
-  </script>
-</body>
-</html>
