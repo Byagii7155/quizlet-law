@@ -32,7 +32,7 @@
       padding: 24px 16px 64px;
     }
 
-    .container { max-width: 1040px; margin: 0 auto; }
+    .container { max-width: 1080px; margin: 0 auto; }
 
     .topbar {
       background: var(--card);
@@ -84,6 +84,43 @@
       background: var(--primary);
       color: #fff;
       border-color: var(--primary);
+    }
+
+    .guide-banner {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .guide-banner h2 {
+      font-size: 1.05rem;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .step-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 0.84rem;
+    }
+
+    .step-box strong {
+      display: block;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+      font-size: 0.86rem;
     }
 
     .grid {
@@ -246,30 +283,59 @@
     <div class="topbar">
       <div class="brand">
         <h1>Захиргааны эрх зүйн платформ</h1>
-        <p>ЗЕХ-ийн 26, 27, 28 дугаар зүйл (Сонсох ажиллагаа), кейс симуляци ба 8 асуулттай сорил</p>
+        <p>ЗЕХ-ийн 26, 27, 28 дугаар зүйл • Сонсох ажиллагааны үе шат, кейс симуляци ба 10 асуулттай сорил</p>
       </div>
       <div class="stats">
-        <div class="pill" id="stat-cases">Кейс: 0/4</div>
-        <div class="pill" id="stat-quiz">Сорил: 0/8</div>
+        <div class="pill" id="stat-cases">Кейс: 0/5</div>
+        <div class="pill" id="stat-quiz">Сорил: 0/10</div>
       </div>
     </div>
 
     <div class="nav-tabs">
       <button class="tab-btn active" data-tab="dashboard">Нүүр / Хяналт</button>
       <button class="tab-btn" data-tab="cases">Кейс симуляци</button>
-      <button class="tab-btn" data-tab="quiz">Сорил (8)</button>
+      <button class="tab-btn" data-tab="quiz">Сорил (10)</button>
       <button class="tab-btn" data-tab="summary">Үр дүн</button>
     </div>
 
     <!-- НҮҮР / ХЯНАЛТЫН ДЭЛГЭЦ -->
     <section id="tab-dashboard">
+      <div class="guide-banner">
+        <h2>Сонсох ажиллагааны зорилго ба 5 үе шат (ЗЕХ 26–28-р зүйл)</h2>
+        <p style="font-size:0.9rem;color:var(--muted);">
+          <strong>Зорилго:</strong> Захиргааны акт гаргахын өмнө хэргийн бодит нөхцөл байдлыг зөв, бүрэн тогтоох, эрх, хууль ёсны ашиг сонирхол нь хөндөгдөж буй этгээдийн тайлбар, санал, нотлох баримтыг сонсож хууль ёсны, үндэслэл бүхий шийдвэр гаргахад оршино.
+        </p>
+        <div class="steps-grid">
+          <div class="step-box">
+            <strong>1. Мэдэгдэл илгээх</strong>
+            <span>Асуудлын агуулга, болзошгүй шийдвэрийн нөлөө, санал өгөх хугацаа ба журмыг талуудад албан ёсоор мэдэгдэнэ.</span>
+          </div>
+          <div class="step-box">
+            <strong>2. Санал хүсэлт хүлээн авах</strong>
+            <span>Иргэн, хуулийн этгээдийн тайлбар, санал, нотлох баримтыг хүлээн авч эрхээ хамгаалах боломж олгоно.</span>
+          </div>
+          <div class="step-box">
+            <strong>3. Сонсох үйл явдал</strong>
+            <span>Байр суурь, тайлбарыг анхааралтай сонсож, явц, оролцогчид, саналыг тэмдэглэлд тусган баримтжуулна.</span>
+          </div>
+          <div class="step-box">
+            <strong>4. Шийдвэр гаргах</strong>
+            <span>Цугларсан баримт, тайлбар, хуулийн заалтыг судлан эцсийн шийдвэр гаргах эсвэл ЗЕХ 28-р зүйлийн үндэслэлийг шалгана.</span>
+          </div>
+          <div class="step-box">
+            <strong>5. Шийдвэрийг мэдээлэх</strong>
+            <span>Гаргасан шийдвэрийг холбогдох талуудад албан ёсоор мэдэгдэж, гомдол/нэхэмжлэл гаргах эрхийн хүрээг ойлгуулна.</span>
+          </div>
+        </div>
+      </div>
+
       <div class="grid">
         <div class="card">
           <div>
             <span class="badge">ЗЕХ 26, 27-р зүйл • Кейс 1</span>
-            <h3>Сонсох ажиллагаагүй хүчингүй болгосон акт</h3>
-            <p>Захиргааны байгууллага иргэнд олгосон зөвшөөрлийг хүчингүй болгохдоо ЗЕХ-ийн 26, 27 дугаар зүйлд заасан мэдэгдэх, тайлбар санал авах сонсох ажиллагааг огт явуулаагүй маргаан.</p>
-            <div class="meta-tag"><strong>Зохицуулалт:</strong> ЗЕХ-ийн 26-р зүйл (сонсох ажиллагаа), 27-р зүйл (журам)</div>
+            <h3>Мэдэгдэл илгээлгүй зөвшөөрөл хүчингүй болгосон нь</h3>
+            <p>Захиргааны байгууллага иргэнд олгосон зөвшөөрлийг хүчингүй болгохдоо 1-р үе шат болох мэдэгдэл илгээх, санал тайлбар авах ажиллагааг огт явуулаагүй маргаан.</p>
+            <div class="meta-tag"><strong>Гол алхам:</strong> Мэдэгдлийн агуулга ба сонсох ажиллагаа (ЗЕХ 26, 27)</div>
           </div>
           <button class="btn btn-primary" onclick="startCase(0)">Кейсийг эхлүүлэх</button>
         </div>
@@ -277,9 +343,9 @@
         <div class="card">
           <div>
             <span class="badge">ЗЕХ 27-р зүйл • Кейс 2</span>
-            <h3>Сонсох ажиллагааны журмын зөрчил</h3>
-            <p>Байгууллага сонсох ажиллагаа явуулсан мэт үзсэн ч оролцогчид бодит байдал, нотлох баримт, тайлбар гаргах боломж олгоогүй, мөн тэмдэглэл, зохих мэдэгдлийн шаардлагыг зөрчсөн нөхцөл байдал.</p>
-            <div class="meta-tag"><strong>Зохицуулалт:</strong> ЗЕХ-ийн 27-р зүйл (мэдэгдэх, тайлбар/санал авах, тэмдэглэл)</div>
+            <h3>Тэмдэглэл ба нотлох баримтыг орхигдуулсан нь</h3>
+            <p>Оролцогч тайлбар, баримт гаргасан боловч сонсох үйл явцын тэмдэглэл хөтлөөгүй, гаргасан санал хүсэлтийг шийдвэр гаргахдаа харгалзан үзээгүй нөхцөл байдал.</p>
+            <div class="meta-tag"><strong>Гол алхам:</strong> Санал хүлээн авах ба тэмдэглэлд тусгах зүйлс (ЗЕХ 27)</div>
           </div>
           <button class="btn btn-primary" onclick="startCase(1)">Кейсийг эхлүүлэх</button>
         </div>
@@ -287,43 +353,15 @@
         <div class="card">
           <div>
             <span class="badge">ЗЕХ 28-р зүйл • Кейс 3</span>
-            <h3>Сонсох ажиллагаа явуулахаас татгалзах үндэслэл</h3>
-            <p>Нийтийн ашиг сонирхолд шууд хохирол учруулах эрсдэл буюу хуульд заасан тусгай үндэслэл бүрдсэн тохиолдолд сонсох ажиллагаа явуулахаас татгалзах эрх зүйн нөхцөл, хязгаарлалтыг шинжлэх кейс.</p>
-            <div class="meta-tag"><strong>Зохицуулалт:</strong> ЗЕХ-ийн 28-р зүйл (сонсох ажиллагаа явуулахаас татгалзах)</div>
+            <h3>Сонсох ажиллагаанаас татгалзах үндэслэл</h3>
+            <p>Нийтийн ашиг сонирхолд шууд хохирол учруулах нөхцөл эсвэл хуульд заасан тусгай үндэслэлээр сонсох ажиллагаа явуулахаас татгалзах эрх зүйн шалгуур.</p>
+            <div class="meta-tag"><strong>Гол алхам:</strong> Татгалзах үндэслэл ба хязгаарлалт (ЗЕХ 28)</div>
           </div>
           <button class="btn btn-primary" onclick="startCase(2)">Кейсийг эхлүүлэх</button>
         </div>
 
         <div class="card">
           <div>
-            <span class="badge">ЗЕХ 26–28, ЗХШХШТХ • Кейс 4</span>
-            <h3>Эс үйлдэхүй ба сонсох ажиллагааны холбоо</h3>
-            <p>Тусгай зөвшөөрөл олгох өргөдлийг хуулийн хугацаанд шийдвэрлээгүй эс үйлдэхүйн үед нөхцөл байдлыг тодруулах, оролцогчийн тайлбарыг сонсох үүрэг болон шүүхэд нэхэмжлэл гаргах үндэслэл.</p>
-            <div class="meta-tag"><strong>Зохицуулалт:</strong> ЗЕХ-ийн 26–28 дугаар зүйл ба ЗХШХШТХ-ийн нэхэмжлэлийн эрх</div>
-          </div>
-          <button class="btn btn-primary" onclick="startCase(3)">Кейсийг эхлүүлэх</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- КЕЙС СИМУЛЯЦИ -->
-    <section id="tab-cases" class="hidden">
-      <div class="card" id="case-box"></div>
-    </section>
-
-    <!-- СОРИЛ -->
-    <section id="tab-quiz" class="hidden">
-      <div class="card" id="quiz-box"></div>
-    </section>
-
-    <!-- ҮР ДҮН -->
-    <section id="tab-summary" class="hidden">
-      <div class="card" style="text-align:center;">
-        <h3>Нийт гүйцэтгэл</h3>
-        <div class="score-ring" id="score-ring" style="--pct: 0%;">
-          <div class="score-inner">
-            <span id="score-pct">0%</span>
-            <small style="font-size:0.75rem;color:#64748b;">Ахиц</small>
-          </div>
-        </div>
-        <p id="summary-
+            <span class="badge">ЗЕХ 26–28, 5-р үе шат • Кейс 4</span>
+            <h3>Шийдвэр гаргах ба мэдээлэх үе шатын зөрчил</h3>
+            <p>Сонсох ажиллагааны дараа шийдвэр гаргахдаа оролцогчийн тайлбарыг ү
