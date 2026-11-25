@@ -34,14 +34,6 @@
       color: var(--text);
       line-height: 1.6;
       padding: 24px 16px 64px;
-    }
-
-    p, span, div, button {
-      text-align: justify;
-      text-justify: inter-word;
-    }
-
-    h1, h2, h3, h4, strong, .badge, .pill, .tab-btn, .btn, .footer-note {
       text-align: left;
     }
 
@@ -215,12 +207,15 @@
 
     .meta-tag {
       margin-top: 14px;
-      font-size: 0.83rem;
+      font-size: 0.84rem;
       color: var(--primary-dark);
       background: #f8fafc;
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 9px 12px;
+      padding: 10px 12px;
+      line-height: 1.5;
+      word-spacing: normal;
+      letter-spacing: normal;
     }
 
     .btn {
@@ -232,6 +227,7 @@
       font-size: 0.92rem;
       transition: 0.15s ease;
       width: 100%;
+      text-align: center;
     }
 
     .actions-row .btn {
@@ -261,11 +257,13 @@
     }
 
     .option-btn {
+      text-align: left;
       background: #fff;
       border: 1.5px solid var(--border);
       border-radius: 12px;
       padding: 13px 16px;
       font-size: 0.93rem;
+      line-height: 1.5;
       cursor: pointer;
       transition: 0.15s ease;
     }
@@ -431,7 +429,7 @@
             <p>Захиргааны байгууллага иргэнд олгосон зөвшөөрлийг хүчингүй болгохдоо 1-р үе шат болох мэдэгдэл илгээх, санал тайлбар авах ажиллагааг огт явуулаагүй маргаан.</p>
             <div class="meta-tag"><strong>Гол алхам:</strong> Мэдэгдлийн агуулга ба сонсох ажиллагаа (ЗЕХ 26, 27)</div>
           </div>
-          <button class="btn btn-primary" type="button" onclick="startCase(0)">Кейсийг эхлүүлэх</button>
+          <button class="btn btn-primary start-case-btn" type="button" data-case-index="0">Кейсийг эхлүүлэх</button>
         </div>
 
         <div class="card">
@@ -441,7 +439,7 @@
             <p>Оролцогч тайлбар, баримт гаргасан боловч сонсох үйл явцын тэмдэглэл хөтлөөгүй, гаргасан санал хүсэлтийг шийдвэр гаргахдаа харгалзан үзээгүй нөхцөл байдал.</p>
             <div class="meta-tag"><strong>Гол алхам:</strong> Санал хүлээн авах ба тэмдэглэлд тусгах зүйлс (ЗЕХ 27)</div>
           </div>
-          <button class="btn btn-primary" type="button" onclick="startCase(1)">Кейсийг эхлүүлэх</button>
+          <button class="btn btn-primary start-case-btn" type="button" data-case-index="1">Кейсийг эхлүүлэх</button>
         </div>
 
         <div class="card">
@@ -451,7 +449,7 @@
             <p>Нийтийн ашиг сонирхолд шууд хохирол учруулах нөхцөл эсвэл хуульд заасан тусгай үндэслэлээр сонсох ажиллагаа явуулахаас татгалзах эрх зүйн шалгуур.</p>
             <div class="meta-tag"><strong>Гол алхам:</strong> Татгалзах үндэслэл ба хязгаарлалт (ЗЕХ 28)</div>
           </div>
-          <button class="btn btn-primary" type="button" onclick="startCase(2)">Кейсийг эхлүүлэх</button>
+          <button class="btn btn-primary start-case-btn" type="button" data-case-index="2">Кейсийг эхлүүлэх</button>
         </div>
 
         <div class="card">
@@ -461,7 +459,7 @@
             <p>Сонсох ажиллагааны дараа шийдвэр гаргахдаа оролцогчийн тайлбарыг үнэлээгүй, мөн шийдвэрийг холбогдох этгээдэд зохих ёсоор мэдээлээгүй эрх зүйн маргаан.</p>
             <div class="meta-tag"><strong>Гол алхам:</strong> Шийдвэр гаргах ба мэдээлэх (ЗЕХ 26–28, ЗХШХШТХ)</div>
           </div>
-          <button class="btn btn-primary" type="button" onclick="startCase(3)">Кейсийг эхлүүлэх</button>
+          <button class="btn btn-primary start-case-btn" type="button" data-case-index="3">Кейсийг эхлүүлэх</button>
         </div>
 
         <div class="card">
@@ -471,7 +469,7 @@
             <p>Тусгай зөвшөөрөл олгох өргөдлийг хугацаанд нь шийдвэрлээгүй эс үйлдэхүйн үед нөхцөл байдлыг тодруулах, сонсох ажиллагаа явуулах болон нэхэмжлэл гаргах эрх.</p>
             <div class="meta-tag"><strong>Гол алхам:</strong> Эс үйлдэхүйн хяналт ба нэхэмжлэлийн эрх</div>
           </div>
-          <button class="btn btn-primary" type="button" onclick="startCase(4)">Кейсийг эхлүүлэх</button>
+          <button class="btn btn-primary start-case-btn" type="button" data-case-index="4">Кейсийг эхлүүлэх</button>
         </div>
       </div>
     </section>
@@ -481,4 +479,388 @@
     </section>
 
     <section id="tab-quiz" class="hidden">
-      <div class="card" id="quiz
+      <div class="card" id="quiz-box"></div>
+    </section>
+
+    <section id="tab-summary" class="hidden">
+      <div class="card" style="text-align:center;">
+        <h3 style="text-align:center;min-height:auto;">Нийт гүйцэтгэл</h3>
+        <div class="score-ring" id="score-ring" style="--pct: 0%;">
+          <div class="score-inner">
+            <span id="score-pct">0%</span>
+            <small style="font-size:0.75rem;color:#64748b;">Ахиц</small>
+          </div>
+        </div>
+        <p id="summary-text" style="text-align:center;">Кейс болон сорилыг бөглөж өөрийн үр дүнг харна уу.</p>
+        <div class="actions-row" style="justify-content:center;margin-top:18px;">
+          <button class="btn btn-secondary" id="reset-progress-btn" type="button">Үр дүнг шинэчлэх (Reset)</button>
+          <button class="btn btn-primary" id="back-dashboard-btn" type="button">Нүүр рүү буцах</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">Боловсруулсан Б.Бямбадорж</div>
+  </div>
+
+  <script>
+    (function () {
+      const casesData = [
+        {
+          level: "ЗЕХ 26, 27-р зүйл",
+          title: "Мэдэгдэл илгээх үе шатыг алгасаж зөвшөөрөл хүчингүй болгосон нь",
+          situation: "Дүүргийн Засаг дарга иргэнд олгосон зөвшөөрлийг хүчингүй болгох шийдвэр гаргахдаа иргэнд урьдчилан мэдэгдэл илгээгээгүй, санал тайлбар гаргах хугацаа, боломж олголгүйгээр шууд акт баталжээ.",
+          options: [
+            "Мэдэгдэл илгээх (1-р үе шат) ба санал хүсэлт хүлээн авах (2-р үе шат) ажиллагааг явуулаагүй нь ЗЕХ-ийн 26, 27 дугаар зүйлийн шаардлагыг зөрчсөн эсэхийг шалгаж, ЗХШХШТХ-ийн дагуу актыг хүчингүй болгуулах нэхэмжлэл гаргах үндэслэл болно.",
+            "Зөвшөөрөл хүчингүй болгож байгаа тохиолдолд мэдэгдэл илгээх шаардлагагүй бөгөөд шийдвэр гарсны дараа л хэлнэ.",
+            "Иргэн зөвхөн гомдол гаргах эрхтэй ба шүүхэд нэхэмжлэл гаргах боломжгүй."
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 26, 27 дугаар зүйл: Мэдэгдэлд захиргааны актаар шийдвэрлэх асуудлын агуулга, нөлөөлөх нөхцөл байдал, тайлбар/санал хүргүүлэх хугацаа, хэлбэр ба хариуцах албан тушаалтны мэдээллийг тодорхой тусгаж холбогдох талуудад мэдэгдэнэ.",
+          detail: "Сонсох ажиллагааны зорилго нь шийдвэр гарахаас өмнө оролцогчийн тайлбар, нотлох баримтыг сонсож бодит нөхцөл байдлыг зөв тогтооход оршино. Мэдэгдэл өгөлгүй шийдвэр гаргасан нь шийдвэрийн үндэслэлд хэрхэн нөлөөлснийг ЗХШХШТХ-ийн дагуу шүүх дүгнэнэ."
+        },
+        {
+          level: "ЗЕХ 27-р зүйл",
+          title: "Санал хүсэлт хүлээн авах ба тэмдэглэл хөтлөх журмын зөрчил",
+          situation: "Сонсох үйл явцын үед иргэн бичгээр тайлбар болон баримт өгсөн, мөн амаар байр сууриа илэрхийлсэн боловч байгууллага тэмдэглэл хөтлөөгүй, тайлбарыг хүлээн авсан эсэх нь баримтад үлдээгүй байна.",
+          options: [
+            "Сонсох үйл явцын тэмдэглэлд оролцогчийн байр суурь, тайлбар, нотлох баримтыг тусгаж баримтжуулах нь ЗЕХ-ийн 27 дугаар зүйлийн журмын чухал хэсэг тул тэмдэглэлгүй, баримтгүй орхисон нь журмын зөрчил болно.",
+            "Тэмдэглэл хөтлөх нь зөвхөн захиргааны байгууллагын дотоод зуршил бөгөөд хууль зүйн ач холбогдолгүй.",
+            "Амаар гаргасан тайлбарыг огт бүртгэхгүй байж болно."
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 27 дугаар зүйл: Сонсох ажиллагааны явцад гаргасан тайлбар, санал, нотлох баримтыг хүлээн авч, сонсох үйл явцын тэмдэглэлд хугацаа, оролцогчид, байр суурь, гаргасан баримтын жагсаалт болон холбогдох баталгаажуулалтыг тусгана.",
+          detail: "Тэмдэглэлд тусгагдсан мэдээлэл нь шийдвэр гаргах үе шатанд оролцогчийн саналыг бодитоор судалж харгалзан үзсэн эсэхийг нотлох үндсэн суурь болдог."
+        },
+        {
+          level: "ЗЕХ 28-р зүйл",
+          title: "Сонсох ажиллагаанаас татгалзах үндэслэлийн шалгуур",
+          situation: "Захиргааны байгууллага сонсох ажиллагаа явуулахаас татгалзахдаа ЗЕХ-ийн 28 дугаар зүйлд заасан үндэслэл бодитой бүрдсэн эсэхийг нягталж үзэлгүйгээр ерөнхий шалтгаар татгалзжээ.",
+          options: [
+            "ЗЕХ-ийн 28 дугаар зүйлд заасан татгалзах үндэслэл нь тухайн хэрэг маргааны нөхцөл байдалд бодитоор хамаарч байгаа эсэхийг нягтлах ёстой ба үндэслэлгүй татгалзсан бол хууль зүйн зөрчил үүснэ.",
+            "ЗЕХ-ийн 28 дугаар зүйл байгаа бол байгууллага ямар ч шалтгаангүйгээр сонсох ажиллагаанаас татгалзах бүрэн эрхтэй.",
+            "Татгалзсан шийдвэрийг хэн ч шалгах эрхгүй."
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 28 дугаар зүйл: Сонсох ажиллагаа явуулахаас татгалзах үндэслэлийг хуулиар хязгаарлан тогтоосон байдаг тул байгууллага дур зоргоороо бус, зөвхөн хуульд заасан үндэслэл бодитой оршин байгаа үед хэрэглэнэ.",
+          detail: "Хэрэв татгалзах үндэслэл бодитоор тогтоогдоогүй бол сонсох ажиллагаа хийгээгүй нь процедурын зөрчил болж, шийдвэрийн хууль зүйн үндэслэлд сөргөөр нөлөөлж болзошгүй."
+        },
+        {
+          level: "ЗЕХ 26–28, 5-р үе шат",
+          title: "Шийдвэр гаргах ба шийдвэрийг мэдээлэх үе шатын уялдаа",
+          situation: "Байгууллага сонсох ажиллагаа явуулсан ч оролцогчийн гаргасан санал, баримтыг шийдвэр гаргахдаа авч үзээгүй, мөн гаргасан шийдвэрийг холбогдох этгээдэд албан ёсоор мэдээлээгүй байна.",
+          options: [
+            "Бүх оролцогчийн байр суурийг судалж шийдвэр гаргах (4-р үе шат) болон шийдвэрийг холбогдох этгээдэд албан ёсоор мэдээлэх (5-р үе шат) нь сонсох ажиллагааны үр дүнг бүрэн хэрэгжүүлэх зайлшгүй алхмууд юм.",
+            "Шийдвэр гарсан бол талуудад мэдээлэхгүй байж болно.",
+            "Оролцогчийн тайлбарыг уншихгүйгээр урьдчилан бэлдсэн шийдвэрийг шууд хэвээр баталж болно."
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 26, 27 дугаар зүйл ба холбогдох зохицуулалт: Сонсох ажиллагаагаар цугларсан санал, тайлбар, нотлох баримтыг үнэлж шийдвэр гаргах ба гаргасан шийдвэрийг холбогдох талуудад зохих журмын дагуу мэдээлнэ.",
+          detail: "Шийдвэрийг албан ёсоор мэдээлснээр оролцогч тал шийдвэрийн агуулга, үндэслэлтэй танилцаж, хуульд заасан гомдол гаргах эсвэл ЗХШХШТХ-ийн дагуу шүүхэд нэхэмжлэл гаргах эрхээ хэрэгжүүлэх боломжтой болдог."
+        },
+        {
+          level: "ЗЕХ 26–28, ЗХШХШТХ",
+          title: "Эс үйлдэхүй ба сонсох ажиллагааны зохицуулалт",
+          situation: "Хуулийн этгээд тусгай зөвшөөрөл хүссэн хүсэлт гаргасан боловч байгууллага хугацаанд нь шийдвэр гаргаагүй, мөн нөхцөл байдлыг тодруулах, сонсох ажиллагаа явуулалгүй удаашруулжээ.",
+          options: [
+            "Хугацаанд нь шийдвэр гаргаагүй эс үйлдэхүйн улмаас эрх, ашиг сонирхол нь зөрчигдсөн этгээд ЗХШХШТХ-ийн дагуу эс үйлдэхүйг хууль бус болохыг тогтоолгох, зохих акт гаргахыг даалгах нэхэмжлэл гаргаж болно.",
+            "Байгууллага ямар ч ажиллагаа хийгээгүй бол маргаан үүсэхгүй.",
+            "Зөвхөн татгалзсан хариу бичгээр өгсөн үед л шүүхэд хандана."
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 26–28 дугаар зүйл: Захиргааны байгууллага шийдвэр гаргах ажиллагааны хүрээнд нөхцөл байдлыг тодруулж, зохицуулалтын дагуу ажиллах үүрэгтэй.",
+          detail: "ЗХШХШТХ-ийн дагуу захиргааны байгууллагын хууль бус эс үйлдэхүйн эсрэг нэхэмжлэл гаргаснаар хуульд заасан чиг үүрэг, шийдвэр гаргах ажиллагааг хуулийн хүрээнд хэрэгжүүлэх эрх зүйн хамгаалалт хэрэгжинэ."
+        }
+      ];
+
+      const quizData = [
+        {
+          q: "1. Сонсох ажиллагааны үндсэн зорилго юу вэ? (ЗЕХ 26-р зүйл)",
+          options: [
+            "Захиргааны акт гаргахын өмнө хэргийн нөхцөл байдлыг зөв тогтоож, эрх, ашиг сонирхол нь хөндөгдөх этгээдийн тайлбар, саналыг сонсож үндэслэл бүхий шийдвэр гаргах",
+            "Шүүхийн хэлэлцүүлгийг бүрэн орлох",
+            "Зөвхөн байгууллагын дотоод тайлан бэлтгэх"
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 26 дугаар зүйл: Захиргааны актаар шийдвэрлэх асуудалд хамаарах нөхцөл байдлыг бодитоор тогтоох зорилгоор оролцогчийн тайлбар, санал, нотлох баримтыг сонсох журам юм.",
+          detail: "Ингэснээр захиргааны акт нь талуудын байр суурь, бодит баримтад тулгуурласан, эрх зүйн хувьд үндэслэлтэй гарах нөхцөл бүрддэг."
+        },
+        {
+          q: "2. Мэдэгдэл илгээх үе шатанд захиргааны байгууллага юуг тусгах ёстой вэ?",
+          options: [
+            "Шийдвэрлэх асуудлын агуулга, нөлөөлөх нөхцөл байдал, тайлбар/санал өгөх хугацаа ба хэлбэр, холбогдох мэдээллийг тодорхой мэдэгдэнэ",
+            "Зөвхөн шийдвэр гарсны дараах огноог бичнэ",
+            "Ямар ч мэдээлэлгүйгээр хоосон зарлал тараана"
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 26, 27 дугаар зүйл: Оролцогч өөрийн байр сууриа бэлтгэж, эрхээ хамгаалах бодит боломжтой байхын тулд мэдэгдлийн агуулга ойлгомжтой, тодорхой байх шаардлагатай.",
+          detail: "Мэдэгдлийн агуулга дутуу буюу тодорхойгүй байх нь оролцогчийн тайлбар, нотлох баримт гаргах эрхийг хязгаарлах эрсдэлтэй."
+        },
+        {
+          q: "3. Санал хүсэлт хүлээн авах үе шатанд оролцогч ямар эрхээ хэрэгжүүлдэг вэ?",
+          options: [
+            "Өөрийн байр суурь, тайлбар, санал болон холбогдох нотлох баримтыг гаргаж, эрх, хууль ёсны ашиг сонирхлоо хамгаалах",
+            "Зөвхөн байгууллагын саналыг зөвшөөрөх гарын үсэг зурах",
+            "Төлбөр төлж байж үг хэлэх"
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 26, 27 дугаар зүйл: Хувь хүн болон хуулийн этгээд өөрийн байр суурийг илэрхийлэх, тайлбар, санал, баримт ирүүлэх боломжоор хангагдана.",
+          detail: "Энэ үе шатанд ирүүлсэн тайлбар, баримт нь захиргааны байгууллагад урьд өмнө мэдэгдээгүй байсан чухал нөхцөл байдлыг илрүүлэх ач холбогдолтой."
+        },
+        {
+          q: "4. Сонсох үйл явцын тэмдэглэлд ямар зүйлсийг тусгах нь чухал вэ? (ЗЕХ 27-р зүйл)",
+          options: [
+            "Сонсох ажиллагаа явуулсан огноо, хэлбэр, оролцогчид, гаргасан тайлбар/санал, хүлээн авсан баримтын тэмдэглэл ба баталгаажуулалт",
+            "Зөвхөн цаг агаарын мэдээ болон албан хаагчийн хувийн сэтгэгдэл",
+            "Тэмдэглэлд юу ч бичихгүйгээр зөвхөн хариуцлага хүлээлгэх"
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 27 дугаар зүйл: Сонсох ажиллагааны явц, үр дүнг баримтжуулж тэмдэглэл үйлдэх нь журмын биелэлтийг баталгаажуулна.",
+          detail: "Тэмдэглэлд оролцогчийн санал, нотлох баримт тодорхой туссанаар хожим хяналтын болон шүүхийн шатанд асуудлыг бодитой шалгахад дөхөм болдог."
+        },
+        {
+          q: "5. Шийдвэр гаргах үе шатанд захиргааны байгууллага ямар алхам хийх вэ?",
+          options: [
+            "Оролцогчдын тайлбар, санал, цугларсан нотлох баримт болон хуулийн заалтыг судлан үнэлж эцсийн шийдвэр гаргана",
+            "Оролцогчдын тайлбарыг уншилгүйгээр санамсаргүй сонголтоор шийдвэр гаргана",
+            "Зөвхөн нэг талын мэдээллийг үнэлээд бусдыг орхигдуулна"
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 26, 27 дугаар зүйл ба захиргааны үйл ажиллагааны зарчим: Сонсох ажиллагаагаар илэрсэн нөхцөл байдал, баримтыг тал бүрээс нь судалж шийдвэр гаргана.",
+          detail: "Хэрэв сонсох ажиллагаагаар шинэ баримт, нөхцөл байдал тогтоогдвол түүнд үндэслэн шийдвэрийн агуулгыг зохих ёсоор тусгах шаардлагатай."
+        },
+        {
+          q: "6. Шийдвэрийг мэдээлэх үе шат ямар ач холбогдолтой вэ?",
+          options: [
+            "Гаргасан шийдвэрийг холбогдох этгээдэд албан ёсоор хүргэж, эрх зүйн үр дагавар болон маргах/гомдол гаргах эрхийн хүрээг тодорхой болгодог",
+            "Шийдвэрийг нууцалж зөвхөн дотооддоо хадгалдаг",
+            "Зөвхөн шүүхэд хэрэг шилжсэн үед л мэдээлдэг"
+          ],
+          correct: 0,
+          law: "ЗЕХ ба ЗХШХШТХ: Шийдвэрийг зохих этгээдэд албан ёсоор мэдээлснээр эрх зүйн актын мэдэгдэл хүргэгдсэн нөхцөл бүрдэж, эрхээ хамгаалах хугацаа, журам тодорхой болдог.",
+          detail: "Мэдээллийг зохих ёсоор хүргэх нь маргааныг тодорхой, ил тод шийдвэрлэхэд чухал үүрэгтэй."
+        },
+        {
+          q: "7. ЗЕХ-ийн 28 дугаар зүйл ямар зохицуулалттай вэ?",
+          options: [
+            "Сонсох ажиллагаа явуулахаас татгалзах үндэслэлүүдийг зохицуулна",
+            "Шүүхийн шийдвэр гүйцэтгэх журмыг зохицуулна",
+            "Иргэний эрх зүйн гэрээ байгуулах журмыг зохицуулна"
+          ],
+          correct: 0,
+          law: "ЗЕХ-ийн 28 дугаар зүйл: Хуульд заасан үндэслэлүүдийн дагуу сонсох ажиллагаа явуулахаас татгалзах нөхцөл, хязгаарлалтыг тогтооно.",
+          detail: "Татгалзах үндэслэлийг хэрэглэхдээ хуульд заасан нөхцөл бодитоор бүрдсэн эсэхийг нягталж үндэслэлтэй хэрэглэх шаардлагатай."
+        },
+        {
+          q: "8. Захиргааны актыг хүчингүй болгуулахад голлон ямар нэхэмжлэлийн төрөл хамаарах вэ? (ЗХШХШТХ)",
+          options: [
+            "Захиргааны акт гаргахаас татгалзсаныг маргах",
+            "Захиргааны актыг хүчингүй болгуулах нэхэмжлэл",
+            "Иргэний эрх зүйн гэрээний үүргийн маргаан"
+          ],
+          correct: 1,
+          law: "ЗХШХШТХ: Хууль бус захиргааны актын улмаас эрх, хууль ёсны ашиг сонирхол нь зөрчигдсөн этгээд уг актыг хүчингүй болгуулах нэхэмжлэл гаргана.",
+          detail: "Хэрэв акт гарсан бөгөөд эрх зүйн үйлчлэлийг нь зогсоож, зөрчигдсөн эрхийг сэргээх шаардлагатай бол хүчингүй болгуулах нэхэмжлэлд хамаарна."
+        },
+        {
+          q: "9. Захиргааны байгууллагын хууль бус эс үйлдэхүй гэдэгт юу ойлгогдох вэ?",
+          options: [
+            "Хууль болон захиргааны актаар хүлээсэн чиг үүрэг, шийдвэр гаргах үүргээ хугацаанд нь биелүүлээгүй байдал",
+            "Иргэн шүүхэд нэхэмжлэл гаргаагүй байдал",
+            "УИХ-аас шинэ хууль баталсан байдал"
+          ],
+          correct: 0,
+          law: "ЗЕХ ба ЗХШХШТХ: Захиргааны байгууллага эрх зүйн актаар хүлээсэн чиг үүргээ хэрэгжүүлэхгүй буюу зохих шийдвэр гаргахгүй хугацаа хэтрүүлсэн нь эс үйлдэхүй болно.",
+          detail: "Эс үйлдэхүйн улмаас эрх, ашиг сонирхол нь зөрчигдсөн этгээд хууль бус эс үйлдэхүйг тогтоолгох, зохих акт гаргахыг даалгах нэхэмжлэл гаргах боломжтой."
+        },
+        {
+          q: "10. Урьдчилан шийдвэрлэх ажиллагаа (гомдол гаргах журам) ямар ач холбогдолтой вэ?",
+          options: [
+            "Захиргааны байгууллагын дотоод хяналтаар алдааг эрт засах боломж олгодог",
+            "Шүүхийн шийдвэрийг хүчингүй болгодог",
+            "Зөвхөн эрүүгийн хэрэгт хэрэглэгддэг"
+          ],
+          correct: 0,
+          law: "ЗЕХ ба ЗХШХШТХ: Хуульд заасан тохиолдолд захиргааны актад гаргах гомдлыг эрх бүхий этгээдээр урьдчилан хянуулах журам үйлчилнэ.",
+          detail: "Энэ нь маргааныг шүүхээс өмнө засаг захиргааны шатанд шуурхай шийдвэрлэх, хууль бус шийдвэрийг цаг алдалгүй залруулах зорилготой."
+        }
+      ];
+
+      let currentCaseIdx = 0;
+      let currentQuizIdx = 0;
+      const caseSolved = new Set();
+      const quizCorrect = new Set();
+
+      function switchTab(tab) {
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          btn.classList.toggle("active", btn.dataset.tab === tab);
+        });
+        ["dashboard", "cases", "quiz", "summary"].forEach((id) => {
+          const sec = document.getElementById("tab-" + id);
+          if (sec) sec.classList.toggle("hidden", id !== tab);
+        });
+        if (tab === "cases") renderCase();
+        if (tab === "quiz") renderQuiz();
+        if (tab === "summary") renderSummary();
+      }
+
+      function startCase(idx) {
+        currentCaseIdx = idx;
+        switchTab("cases");
+      }
+
+      function renderCase() {
+        const item = casesData[currentCaseIdx];
+        const box = document.getElementById("case-box");
+        box.innerHTML = `
+          <div>
+            <span class="badge">${item.level} • Кейс ${currentCaseIdx + 1}/${casesData.length}</span>
+            <h3>${item.title}</h3>
+            <p style="margin-top:8px;color:var(--text);">${item.situation}</p>
+            <div class="options" id="case-options">
+              ${item.options.map((opt, i) => `
+                <button class="option-btn case-opt-btn" type="button" data-opt-index="${i}">${opt}</button>
+              `).join("")}
+            </div>
+            <div id="case-feedback"></div>
+          </div>
+          <div class="actions-row">
+            <button class="btn btn-secondary" id="prev-case-btn" type="button">Өмнөх</button>
+            <button class="btn btn-primary" id="next-case-btn" type="button">Дараагийн кейс</button>
+          </div>
+        `;
+
+        box.querySelectorAll(".case-opt-btn").forEach((btn) => {
+          btn.addEventListener("click", () => answerCase(Number(btn.dataset.optIndex)));
+        });
+        document.getElementById("prev-case-btn").addEventListener("click", prevCase);
+        document.getElementById("next-case-btn").addEventListener("click", nextCase);
+      }
+
+      function answerCase(choiceIdx) {
+        const item = casesData[currentCaseIdx];
+        const btns = document.querySelectorAll("#case-options .option-btn");
+        btns.forEach((btn, i) => {
+          btn.disabled = true;
+          if (i === item.correct) btn.classList.add("correct");
+          else if (i === choiceIdx) btn.classList.add("wrong");
+        });
+        if (choiceIdx === item.correct) caseSolved.add(currentCaseIdx);
+        updateStats();
+
+        document.getElementById("case-feedback").innerHTML = `
+          <div class="callout">
+            <strong>${choiceIdx === item.correct ? "Зөв эрх зүйн дүгнэлт" : "Хуулийн зохицуулалтын дэлгэрэнгүй тайлбар"}</strong>
+            <p style="color:var(--text);">${item.law}</p>
+            <div class="law-detail">${item.detail}</div>
+          </div>
+        `;
+      }
+
+      function prevCase() {
+        currentCaseIdx = (currentCaseIdx - 1 + casesData.length) % casesData.length;
+        renderCase();
+      }
+
+      function nextCase() {
+        currentCaseIdx = (currentCaseIdx + 1) % casesData.length;
+        renderCase();
+      }
+
+      function renderQuiz() {
+        const item = quizData[currentQuizIdx];
+        const box = document.getElementById("quiz-box");
+        box.innerHTML = `
+          <div>
+            <span class="badge">Сорил • Асуулт ${currentQuizIdx + 1}/${quizData.length}</span>
+            <h3>${item.q}</h3>
+            <div class="options" id="quiz-options">
+              ${item.options.map((opt, i) => `
+                <button class="option-btn quiz-opt-btn" type="button" data-opt-index="${i}">${opt}</button>
+              `).join("")}
+            </div>
+            <div id="quiz-feedback"></div>
+          </div>
+          <div class="actions-row">
+            <button class="btn btn-secondary" id="prev-quiz-btn" type="button">Өмнөх</button>
+            <button class="btn btn-primary" id="next-quiz-btn" type="button">Дараагийн асуулт</button>
+          </div>
+        `;
+
+        box.querySelectorAll(".quiz-opt-btn").forEach((btn) => {
+          btn.addEventListener("click", () => answerQuiz(Number(btn.dataset.optIndex)));
+        });
+        document.getElementById("prev-quiz-btn").addEventListener("click", prevQuiz);
+        document.getElementById("next-quiz-btn").addEventListener("click", nextQuiz);
+      }
+
+      function answerQuiz(choiceIdx) {
+        const item = quizData[currentQuizIdx];
+        const btns = document.querySelectorAll("#quiz-options .option-btn");
+        btns.forEach((btn, i) => {
+          btn.disabled = true;
+          if (i === item.correct) btn.classList.add("correct");
+          else if (i === choiceIdx) btn.classList.add("wrong");
+        });
+        if (choiceIdx === item.correct) quizCorrect.add(currentQuizIdx);
+        updateStats();
+
+        document.getElementById("quiz-feedback").innerHTML = `
+          <div class="callout">
+            <strong>${choiceIdx === item.correct ? "Зөв хариулт • Эрх зүйн тайлбар" : "Тайлбар ба хуулийн зохицуулалт"}</strong>
+            <p style="color:var(--text);">${item.law}</p>
+            <div class="law-detail">${item.detail}</div>
+          </div>
+        `;
+      }
+
+      function prevQuiz() {
+        currentQuizIdx = (currentQuizIdx - 1 + quizData.length) % quizData.length;
+        renderQuiz();
+      }
+
+      function nextQuiz() {
+        currentQuizIdx = (currentQuizIdx + 1) % quizData.length;
+        renderQuiz();
+      }
+
+      function updateStats() {
+        document.getElementById("stat-cases").textContent = `Кейс: ${caseSolved.size}/${casesData.length}`;
+        document.getElementById("stat-quiz").textContent = `Сорил: ${quizCorrect.size}/${quizData.length}`;
+      }
+
+      function renderSummary() {
+        const total = casesData.length + quizData.length;
+        const done = caseSolved.size + quizCorrect.size;
+        const pct = Math.round((done / total) * 100);
+        document.getElementById("score-ring").style.setProperty("--pct", pct + "%");
+        document.getElementById("score-pct").textContent = pct + "%";
+        document.getElementById("summary-text").textContent =
+          `Та нийт ${total} даалгавраас ${done} амжилттай гүйцэтгэлээ (Кейс: ${caseSolved.size}/${casesData.length}, Сорил: ${quizCorrect.size}/${quizData.length}).`;
+      }
+
+      function resetProgress() {
+        caseSolved.clear();
+        quizCorrect.clear();
+        updateStats();
+        renderSummary();
+      }
+
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+      });
+
+      document.querySelectorAll(".start-case-btn").forEach((btn) => {
+        btn.addEventListener("click", () => startCase(Number(btn.dataset.caseIndex)));
+      });
+
+      const resetBtn = document.getElementById("reset-progress-btn");
+      if (resetBtn) resetBtn.addEventListener("click", resetProgress);
+
+      const backBtn = document.getElementById("back-dashboard-btn");
+      if (backBtn) backBtn.addEventListener("click", () => switchTab("dashboard"));
+
+      updateStats();
+    })();
+  </script>
+</body>
+</html>
