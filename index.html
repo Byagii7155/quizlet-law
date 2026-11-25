@@ -1,1 +1,534 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Захиргааны эрх зүйн сургалт ба сорилын платформ</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #1d4ed8;
+      --primary-dark: #1e3a8a;
+      --primary-soft: #eff6ff;
+      --success-bg: #ecfdf5;
+      --success-border: #10b981;
+      --success-text: #065f46;
+      --error-bg: #fef2f2;
+      --error-border: #ef4444;
+      --error-text: #991b1b;
+    }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      padding: 24px 16px 64px;
+    }
+
+    .container { max-width: 980px; margin: 0 auto; }
+
+    .topbar {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .brand h1 { font-size: 1.25rem; color: var(--primary-dark); }
+    .brand p { font-size: 0.9rem; color: var(--muted); }
+
+    .stats { display: flex; gap: 10px; flex-wrap: wrap; }
+    .pill {
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      border: 1px solid #bfdbfe;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+    .card p { font-size: 0.9rem; color: var(--muted); }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: 0.15s ease;
+    }
+
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-secondary {
+      background: #f1f5f9;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .options { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
+
+    .option-btn {
+      text-align: left;
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+    }
+
+    .option-btn.selected {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+      font-weight: 600;
+    }
+
+    .option-btn.correct {
+      background: var(--success-bg);
+      border-color: var(--success-border);
+      color: var(--success-text);
+      font-weight: 600;
+    }
+
+    .option-btn.wrong {
+      background: var(--error-bg);
+      border-color: var(--error-border);
+      color: var(--error-text);
+    }
+
+    .callout {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      border-left: 4px solid var(--primary);
+      font-size: 0.9rem;
+    }
+
+    .callout strong { color: var(--primary-dark); display: block; margin-bottom: 4px; }
+
+    .actions-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 16px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .score-ring {
+      width: 136px;
+      height: 136px;
+      border-radius: 50%;
+      background: conic-gradient(var(--primary) var(--pct, 0%), #e2e8f0 0);
+      display: grid;
+      place-items: center;
+      margin: 12px auto 18px;
+    }
+
+    .score-inner {
+      width: 106px;
+      height: 106px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .hidden { display: none; }
+    .footer-note {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">
+        <h1>Захиргааны эрх зүйн платформ</h1>
+        <p>Кейс симуляци, сорил болон ЗЕХ / ЗХШХШТХ-ийн хуулийн тайлбар</p>
+      </div>
+      <div class="stats">
+        <div class="pill" id="stat-cases">Кейс: 0/3</div>
+        <div class="pill" id="stat-quiz">Сорил: 0/3</div>
+      </div>
+    </div>
+
+    <div class="nav-tabs">
+      <button class="tab-btn active" data-tab="dashboard">Нүүр / Хяналт</button>
+      <button class="tab-btn" data-tab="cases">Кейс симуляци</button>
+      <button class="tab-btn" data-tab="quiz">Сорил</button>
+      <button class="tab-btn" data-tab="summary">Үр дүн</button>
+    </div>
+
+    <!-- НҮҮР / ХЯНАЛТЫН ДЭЛГЭЦ -->
+    <section id="tab-dashboard">
+      <div class="grid">
+        <div class="card">
+          <div>
+            <span class="badge">Анхан түвшин • Кейс</span>
+            <h3>Сонсох ажиллагаа хийгээгүй акт</h3>
+            <p>Дүүргийн Засаг дарга иргэнд олгосон барилгын зөвшөөрлийг урьдчилан мэдэгдэж, тайлбар авалгүй хүчингүй болгосон маргаан.</p>
+          </div>
+          <button class="btn btn-primary" onclick="startCase(0)">Кейсийг эхлүүлэх</button>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Дунд түвшин • Кейс</span>
+            <h3>Тусгай зөвшөөрлийн эс үйлдэхүй</h3>
+            <p>ХХК бүрэн материалаа хүргүүлсэн боловч яам хуульд заасан хугацаанд шийдвэр гаргаагүй нөхцөл байдал.</p>
+          </div>
+          <button class="btn btn-primary" onclick="startCase(1)">Кейсийг эхлүүлэх</button>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge">Ахисан түвшин • Кейс</span>
+            <h3>Эрх хэмжээ хэтрүүлсэн акт</h3>
+            <p>Агентлагийн мэргэжилтэн хуулиар олгогдоогүй бүрэн эрхийн хүрээнд аж ахуйн нэгжийг торгосон шийдвэр.</p>
+          </div>
+          <button class="btn btn-primary" onclick="startCase(2)">Кейсийг эхлүүлэх</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- КЕЙС СИМУЛЯЦИ -->
+    <section id="tab-cases" class="hidden">
+      <div class="card" id="case-box"></div>
+    </section>
+
+    <!-- СОРИЛ -->
+    <section id="tab-quiz" class="hidden">
+      <div class="card" id="quiz-box"></div>
+    </section>
+
+    <!-- ҮР ДҮН -->
+    <section id="tab-summary" class="hidden">
+      <div class="card" style="text-align:center;">
+        <h3>Нийт гүйцэтгэл</h3>
+        <div class="score-ring" id="score-ring" style="--pct: 0%;">
+          <div class="score-inner">
+            <span id="score-pct">0%</span>
+            <small style="font-size:0.75rem;color:#64748b;">Ахиц</small>
+          </div>
+        </div>
+        <p id="summary-text">Кейс болон сорилыг бөглөж өөрийн үр дүнг харна уу.</p>
+        <div class="actions-row" style="justify-content:center;margin-top:18px;">
+          <button class="btn btn-secondary" onclick="resetProgress()">Үр дүнг шинэчлэх (Reset)</button>
+          <button class="btn btn-primary" onclick="switchTab('dashboard')">Нүүр рүү буцах</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">Боловсруулсан Б.Бямбадорж</div>
+  </div>
+
+  <script>
+    const casesData = [
+      {
+        level: "Анхан түвшин",
+        title: "Барилгын зөвшөөрлийг сонсох ажиллагаагүйгээр хүчингүй болгосон нь",
+        situation: "Дүүргийн Засаг дарга иргэнд олгосон барилгын зөвшөөрлийг түүнд урьдчилан мэдэгдэж, санал тайлбар авах сонсох ажиллагаа хийлгүйгээр хүчингүй болгожээ. Таны сонгох эрх зүйн дүгнэлт аль нь вэ?",
+        options: [
+          "Сонсох ажиллагаа хийгээгүй нь захиргааны актыг хууль бус болох үндэслэл болж болно.",
+          "Засаг дарга өөрийн эрх хэмжээний хүрээнд тайлбар авалгүй хүчингүй болгох бүрэн эрхтэй.",
+          "Зөвшөөрөл хүчингүй болсон бол нэхэмжлэл гаргах эрх үүсэхгүй."
+        ],
+        correct: 0,
+        law: "Захиргааны ерөнхий хууль (ЗЕХ) болон Захиргааны хэрэг шүүхэд хянан шийдвэрлэх тухай хууль (ЗХШХШТХ): Захиргааны акт гаргах эсвэл хүчингүй болгохын өмнө эрх, хууль ёсны ашиг сонирхол нь хөндөгдөж буй этгээдэд сонсох ажиллагаа хийх үүрэгтэй."
+      },
+      {
+        level: "Дунд түвшин",
+        title: "Тусгай зөвшөөрөл олгох хугацаанд шийдвэр гаргаагүй эс үйлдэхүй",
+        situation: "ХХК тусгай зөвшөөрөл хүсэх бүрэн баримт бичгийг хуульд заасан журмаар яаманд хүргүүлсэн боловч холбогдох хугацаа өнгөрөхөд ямар ч хариу, шийдвэр гаргаагүй байна.",
+        options: [
+          "Хугацаанд нь шийдвэр гаргаагүй нь захиргааны байгууллагын хууль бус эс үйлдэхүй болно.",
+          "Хариу өгөөгүй бол автоматаар татгалзсан акт гарсанд тооцно.",
+          "Зөвхөн дээд шатны албан тушаалтанд гомдол гаргахаас өөр аргагүй."
+        ],
+        correct: 0,
+        law: "ЗХШХШТХ болон ЗЕХ: Захиргааны байгууллага хуульд заасан хугацаанд чиг үүргээ хэрэгжүүлж шийдвэр гаргаагүй бол эс үйлдэхүйг хууль бус болохыг тогтоолгох, зохих акт гаргахыг даалгах нэхэмжлэл гаргах үндэслэлтэй."
+      },
+      {
+        level: "Ахисан түвшин",
+        title: "Эрх хэмжээ хэтрүүлсэн албан тушаалтны гаргасан торгуулийн акт",
+        situation: "Агентлагийн мэргэжилтэн хуулиар өөрт олгогдоогүй бүрэн эрхийн хүрээнд аж ахуйн нэгжид торгууль ногдуулах шийдвэр гаргажээ.",
+        options: [
+          "Эрх хэмжээ хэтрүүлэн гаргасан зарим акт нь илт хууль бус захиргааны актын шинжийг агуулж болно.",
+          "Албан тушаалтны гарын үсэг байгаа л бол акт үргэлж хүчин төгөлдөр байна.",
+          "Торгуулийн хэмжээ бага бол эрх хэмжээ хэтрүүлснийг авч үзэхгүй."
+        ],
+        correct: 0,
+        law: "ЗЕХ болон ЗХШХШТХ: Эрх хэмжээг илт хэтрүүлсэн эсхүл эрх олгогдоогүй этгээд гаргасан актын эрх зүйн үр дагавар, хүчинтэй эсэхийг хуулийн заалт, нөхцөл байдалтай харьцуулан нарийвчлан шалгана."
+      }
+    ];
+
+    const quizData = [
+      {
+        q: "1. Захиргааны актыг хүчингүй болгуулахад голлон ямар нэхэмжлэлийн төрөл хамаарах вэ?",
+        options: [
+          "Захиргааны акт гаргахаас татгалзсаныг маргах",
+          "Захиргааны актыг хүчингүй болгуулах нэхэмжлэл",
+          "Гэрээний үүргийн маргаан"
+        ],
+        correct: 1,
+        law: "ЗХШХШТХ: Захиргааны хууль бус актын улмаас эрх, хууль ёсны ашиг сонирхол нь зөрчигдсөн этгээд тухайн актыг хүчингүй болгуулах нэхэмжлэл гаргана."
+      },
+      {
+        q: "2. Сонсох ажиллагааны үндсэн зорилго юу вэ?",
+        options: [
+          "Зөвхөн архивын бүртгэл хөтлөх",
+          "Тухайн асуудлаар гаргах шийдвэрт нөлөөлөх нөхцөл байдлын талаар этгээдийн тайлбар, саналыг сонсох",
+          "Шүүхийн хэлэлцүүлгийг орлох"
+        ],
+        correct: 1,
+        law: "ЗЕХ: Захиргааны шийдвэр гаргахаас өмнө холбогдох этгээдэд өөрийн байр суурь, нотлох баримтаа илэрхийлэх боломж олгох нь хууль ёсны шийдвэр гаргах чухал баталгаа юм."
+      },
+      {
+        q: "3. Захиргааны байгууллагын эс үйлдэхүй гэдэгт юу ойлгогдох вэ?",
+        options: [
+          "Хууль, захиргааны актаар хүлээсэн үүргээ хугацаанд нь биелүүлээгүй байдал",
+          "Иргэн шүүхэд нэхэмжлэл гаргаагүй байдал",
+          "Хууль тогтоомж шинэчлэгдсэн байдал"
+        ],
+        correct: 0,
+        law: "ЗХШХШТХ: Захиргааны байгууллага хуулиар хүлээсэн чиг үүргээ хэрэгжүүлэхгүй буюу шийдвэр гаргахгүй хугацаа хэтрүүлсэн тохиолдолд эс үйлдэхүйн асуудал яригдана."
+      }
+    ];
+
+    let currentCaseIdx = 0;
+    let currentQuizIdx = 0;
+    let caseSolved = new Set();
+    let quizCorrect = new Set();
+
+    function switchTab(tab) {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
+      ["dashboard", "cases", "quiz", "summary"].forEach(id => {
+        document.getElementById("tab-" + id).classList.toggle("hidden", id !== tab);
+      });
+      if (tab === "cases") renderCase();
+      if (tab === "quiz") renderQuiz();
+      if (tab === "summary") renderSummary();
+    }
+
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+    });
+
+    function startCase(idx) {
+      currentCaseIdx = idx;
+      switchTab("cases");
+    }
+
+    function renderCase() {
+      const item = casesData[currentCaseIdx];
+      const box = document.getElementById("case-box");
+      box.innerHTML = `
+        <div>
+          <span class="badge">${item.level} • Кейс ${currentCaseIdx + 1}/${casesData.length}</span>
+          <h3>${item.title}</h3>
+          <p style="margin-top:8px;color:var(--text);">${item.situation}</p>
+          <div class="options" id="case-options">
+            ${item.options.map((opt, i) => `
+              <button class="option-btn" onclick="answerCase(${i})">${opt}</button>
+            `).join("")}
+          </div>
+          <div id="case-feedback"></div>
+        </div>
+        <div class="actions-row">
+          <button class="btn btn-secondary" onclick="prevCase()">Өмнөх</button>
+          <button class="btn btn-primary" onclick="nextCase()">Дараагийн кейс</button>
+        </div>
+      `;
+    }
+
+    function answerCase(choiceIdx) {
+      const item = casesData[currentCaseIdx];
+      const btns = document.querySelectorAll("#case-options .option-btn");
+      btns.forEach((b, i) => {
+        b.disabled = true;
+        if (i === item.correct) b.classList.add("correct");
+        else if (i === choiceIdx) b.classList.add("wrong");
+      });
+      if (choiceIdx === item.correct) caseSolved.add(currentCaseIdx);
+      updateStats();
+
+      document.getElementById("case-feedback").innerHTML = `
+        <div class="callout">
+          <strong>${choiceIdx === item.correct ? "Зөв дүгнэлт" : "Хуулийн зохицуулалтын тайлбар"}</strong>
+          ${item.law}
+        </div>
+      `;
+    }
+
+    function prevCase() {
+      currentCaseIdx = (currentCaseIdx - 1 + casesData.length) % casesData.length;
+      renderCase();
+    }
+
+    function nextCase() {
+      currentCaseIdx = (currentCaseIdx + 1) % casesData.length;
+      renderCase();
+    }
+
+    function renderQuiz() {
+      const item = quizData[currentQuizIdx];
+      const box = document.getElementById("quiz-box");
+      box.innerHTML = `
+        <div>
+          <span class="badge">Сорил • Асуулт ${currentQuizIdx + 1}/${quizData.length}</span>
+          <h3>${item.q}</h3>
+          <div class="options" id="quiz-options">
+            ${item.options.map((opt, i) => `
+              <button class="option-btn" onclick="answerQuiz(${i})">${opt}</button>
+            `).join("")}
+          </div>
+          <div id="quiz-feedback"></div>
+        </div>
+        <div class="actions-row">
+          <button class="btn btn-secondary" onclick="prevQuiz()">Өмнөх</button>
+          <button class="btn btn-primary" onclick="nextQuiz()">Дараагийн асуулт</button>
+        </div>
+      `;
+    }
+
+    function answerQuiz(choiceIdx) {
+      const item = quizData[currentQuizIdx];
+      const btns = document.querySelectorAll("#quiz-options .option-btn");
+      btns.forEach((b, i) => {
+        b.disabled = true;
+        if (i === item.correct) b.classList.add("correct");
+        else if (i === choiceIdx) b.classList.add("wrong");
+      });
+      if (choiceIdx === item.correct) quizCorrect.add(currentQuizIdx);
+      updateStats();
+
+      document.getElementById("quiz-feedback").innerHTML = `
+        <div class="callout">
+          <strong>${choiceIdx === item.correct ? "Зөв хариулт" : "Тайлбар"}</strong>
+          ${item.law}
+        </div>
+      `;
+    }
+
+    function prevQuiz() {
+      currentQuizIdx = (currentQuizIdx - 1 + quizData.length) % quizData.length;
+      renderQuiz();
+    }
+
+    function nextQuiz() {
+      currentQuizIdx = (currentQuizIdx + 1) % quizData.length;
+      renderQuiz();
+    }
+
+    function updateStats() {
+      document.getElementById("stat-cases").textContent = `Кейс: ${caseSolved.size}/${casesData.length}`;
+      document.getElementById("stat-quiz").textContent = `Сорил: ${quizCorrect.size}/${quizData.length}`;
+    }
+
+    function renderSummary() {
+      const total = casesData.length + quizData.length;
+      const done = caseSolved.size + quizCorrect.size;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById("score-ring").style.setProperty("--pct", pct + "%");
+      document.getElementById("score-pct").textContent = pct + "%";
+      document.getElementById("summary-text").textContent =
+        `Та нийт ${total} даалгавраас ${done} амжилттай гүйцэтгэлээ (Кейс: ${caseSolved.size}/${casesData.length}, Сорил: ${quizCorrect.size}/${quizData.length}).`;
+    }
+
+    function resetProgress() {
+      caseSolved.clear();
+      quizCorrect.clear();
+      updateStats();
+      renderSummary();
+    }
+
+    updateStats();
+  </script>
+</body>
+</html>
