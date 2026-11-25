@@ -28,11 +28,11 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.55;
+      line-height: 1.6;
       padding: 24px 16px 64px;
     }
 
-    .container { max-width: 980px; margin: 0 auto; }
+    .container { max-width: 1020px; margin: 0 auto; }
 
     .topbar {
       background: var(--card);
@@ -48,8 +48,8 @@
       box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
     }
 
-    .brand h1 { font-size: 1.25rem; color: var(--primary-dark); }
-    .brand p { font-size: 0.9rem; color: var(--muted); }
+    .brand h1 { font-size: 1.3rem; color: var(--primary-dark); }
+    .brand p { font-size: 0.92rem; color: var(--muted); margin-top: 2px; }
 
     .stats { display: flex; gap: 10px; flex-wrap: wrap; }
     .pill {
@@ -59,7 +59,7 @@
       padding: 6px 14px;
       border-radius: 999px;
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .nav-tabs {
@@ -88,7 +88,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
       gap: 16px;
     }
 
@@ -96,12 +96,12 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 20px;
+      padding: 22px;
       box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 14px;
+      gap: 16px;
     }
 
     .badge {
@@ -112,19 +112,29 @@
       border-radius: 999px;
       background: var(--primary-soft);
       color: var(--primary);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
-    .card h3 { font-size: 1.05rem; margin-bottom: 6px; }
-    .card p { font-size: 0.9rem; color: var(--muted); }
+    .card h3 { font-size: 1.08rem; margin-bottom: 8px; color: var(--text); }
+    .card p { font-size: 0.92rem; color: var(--muted); }
+
+    .meta-tag {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--primary-dark);
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 8px 10px;
+    }
 
     .btn {
       border: none;
       border-radius: 10px;
-      padding: 10px 16px;
+      padding: 11px 16px;
       font-weight: 600;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       transition: 0.15s ease;
     }
 
@@ -136,15 +146,15 @@
       border: 1px solid var(--border);
     }
 
-    .options { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
+    .options { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; }
 
     .option-btn {
       text-align: left;
       background: #fff;
       border: 1.5px solid var(--border);
       border-radius: 12px;
-      padding: 12px 16px;
-      font-size: 0.92rem;
+      padding: 13px 16px;
+      font-size: 0.93rem;
       cursor: pointer;
       transition: 0.15s ease;
     }
@@ -152,12 +162,6 @@
     .option-btn:hover:not(:disabled) {
       border-color: var(--primary);
       background: var(--primary-soft);
-    }
-
-    .option-btn.selected {
-      border-color: var(--primary);
-      background: var(--primary-soft);
-      font-weight: 600;
     }
 
     .option-btn.correct {
@@ -174,38 +178,50 @@
     }
 
     .callout {
-      margin-top: 14px;
-      padding: 14px 16px;
+      margin-top: 16px;
+      padding: 16px 18px;
       border-radius: 12px;
       background: var(--primary-soft);
       border-left: 4px solid var(--primary);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
     }
 
-    .callout strong { color: var(--primary-dark); display: block; margin-bottom: 4px; }
+    .callout strong {
+      color: var(--primary-dark);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .law-detail {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #93c5fd;
+      color: #1e293b;
+    }
 
     .actions-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 16px;
+      margin-top: 18px;
       gap: 10px;
       flex-wrap: wrap;
     }
 
     .score-ring {
-      width: 136px;
-      height: 136px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       background: conic-gradient(var(--primary) var(--pct, 0%), #e2e8f0 0);
       display: grid;
       place-items: center;
-      margin: 12px auto 18px;
+      margin: 14px auto 18px;
     }
 
     .score-inner {
-      width: 106px;
-      height: 106px;
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
       background: #fff;
       display: flex;
@@ -230,18 +246,18 @@
     <div class="topbar">
       <div class="brand">
         <h1>Захиргааны эрх зүйн платформ</h1>
-        <p>Кейс симуляци, сорил болон ЗЕХ / ЗХШХШТХ-ийн хуулийн тайлбар</p>
+        <p>Кейс симуляци, 6 асуулттай сорил болон ЗЕХ / ЗХШХШТХ-ийн дэлгэрэнгүй тайлбар</p>
       </div>
       <div class="stats">
         <div class="pill" id="stat-cases">Кейс: 0/3</div>
-        <div class="pill" id="stat-quiz">Сорил: 0/3</div>
+        <div class="pill" id="stat-quiz">Сорил: 0/6</div>
       </div>
     </div>
 
     <div class="nav-tabs">
       <button class="tab-btn active" data-tab="dashboard">Нүүр / Хяналт</button>
       <button class="tab-btn" data-tab="cases">Кейс симуляци</button>
-      <button class="tab-btn" data-tab="quiz">Сорил</button>
+      <button class="tab-btn" data-tab="quiz">Сорил (6)</button>
       <button class="tab-btn" data-tab="summary">Үр дүн</button>
     </div>
 
@@ -250,27 +266,30 @@
       <div class="grid">
         <div class="card">
           <div>
-            <span class="badge">Анхан түвшин • Кейс</span>
+            <span class="badge">Анхан түвшин • Кейс 1</span>
             <h3>Сонсох ажиллагаа хийгээгүй акт</h3>
-            <p>Дүүргийн Засаг дарга иргэнд олгосон барилгын зөвшөөрлийг урьдчилан мэдэгдэж, тайлбар авалгүй хүчингүй болгосон маргаан.</p>
+            <p>Дүүргийн Засаг дарга иргэнд олгосон барилгын зөвшөөрлийг урьдчилан мэдэгдэж, санал тайлбар авах ажиллагаа явуулалгүй хүчингүй болгосон захиргааны актын хууль зүйн үндэслэл.</p>
+            <div class="meta-tag"><strong>Гол сэдэв:</strong> Сонсох ажиллагаа, захиргааны актыг хүчингүй болгох</div>
           </div>
           <button class="btn btn-primary" onclick="startCase(0)">Кейсийг эхлүүлэх</button>
         </div>
 
         <div class="card">
           <div>
-            <span class="badge">Дунд түвшин • Кейс</span>
+            <span class="badge">Дунд түвшин • Кейс 2</span>
             <h3>Тусгай зөвшөөрлийн эс үйлдэхүй</h3>
-            <p>ХХК бүрэн материалаа хүргүүлсэн боловч яам хуульд заасан хугацаанд шийдвэр гаргаагүй нөхцөл байдал.</p>
+            <p>ХХК тусгай зөвшөөрөл хүссэн баримт бичгийг хуульд заасан журмаар бүрдүүлж өгсөн боловч эрх бүхий яам хуулийн хугацаанд хариу өгөөгүй, шийдвэр гаргаагүй нөхцөл байдал.</p>
+            <div class="meta-tag"><strong>Гол сэдэв:</strong> Хууль бус эс үйлдэхүй, шийдвэр гаргахыг даалгах</div>
           </div>
           <button class="btn btn-primary" onclick="startCase(1)">Кейсийг эхлүүлэх</button>
         </div>
 
         <div class="card">
           <div>
-            <span class="badge">Ахисан түвшин • Кейс</span>
+            <span class="badge">Ахисан түвшин • Кейс 3</span>
             <h3>Эрх хэмжээ хэтрүүлсэн акт</h3>
-            <p>Агентлагийн мэргэжилтэн хуулиар олгогдоогүй бүрэн эрхийн хүрээнд аж ахуйн нэгжийг торгосон шийдвэр.</p>
+            <p>Агентлагийн мэргэжилтэн хуулиар өөрт олгогдоогүй бүрэн эрхийн хүрээнд аж ахуйн нэгжид хариуцлага ногдуулж торгуулийн акт гаргасан маргааны эрх зүйн шинжилгээ.</p>
+            <div class="meta-tag"><strong>Гол сэдэв:</strong> Харьяалал ба бүрэн эрх, актын хүчин төгөлдөр байдал</div>
           </div>
           <button class="btn btn-primary" onclick="startCase(2)">Кейсийг эхлүүлэх</button>
         </div>
@@ -313,38 +332,41 @@
       {
         level: "Анхан түвшин",
         title: "Барилгын зөвшөөрлийг сонсох ажиллагаагүйгээр хүчингүй болгосон нь",
-        situation: "Дүүргийн Засаг дарга иргэнд олгосон барилгын зөвшөөрлийг түүнд урьдчилан мэдэгдэж, санал тайлбар авах сонсох ажиллагаа хийлгүйгээр хүчингүй болгожээ. Таны сонгох эрх зүйн дүгнэлт аль нь вэ?",
+        situation: "Дүүргийн Засаг дарга иргэнд олгосон барилгын зөвшөөрлийг түүнд урьдчилан мэдэгдэж, санал тайлбар авах сонсох ажиллагаа хийлгүйгээр шууд хүчингүй болгожээ. Иргэн уг актаар эрх, хууль ёсны ашиг сонирхол нь зөрчигдсөн гэж үзэж захиргааны хэргийн шүүхэд ханджээ.",
         options: [
-          "Сонсох ажиллагаа хийгээгүй нь захиргааны актыг хууль бус болох үндэслэл болж болно.",
-          "Засаг дарга өөрийн эрх хэмжээний хүрээнд тайлбар авалгүй хүчингүй болгох бүрэн эрхтэй.",
-          "Зөвшөөрөл хүчингүй болсон бол нэхэмжлэл гаргах эрх үүсэхгүй."
+          "Сонсох ажиллагаа хийгээгүй нь захиргааны актыг хууль зүйн үндэслэлгүй буюу зөрчилтэй болгох үндэслэл болж, актыг хүчингүй болгуулах нэхэмжлэлийн шаардлага гаргах нөхцөлийг бүрдүүлнэ.",
+          "Засаг дарга өөрийн санаачилгаар зөвшөөрлийг хүчингүй болгох эрхтэй тул сонсох ажиллагаа заавал хийх шаардлагагүй.",
+          "Барилгын зөвшөөрөл хүчингүй болсон тохиолдолд иргэн зөвхөн гомдол гаргах эрхтэй бөгөөд шүүхэд нэхэмжлэл гаргах эрхгүй."
         ],
         correct: 0,
-        law: "Захиргааны ерөнхий хууль (ЗЕХ) болон Захиргааны хэрэг шүүхэд хянан шийдвэрлэх тухай хууль (ЗХШХШТХ): Захиргааны акт гаргах эсвэл хүчингүй болгохын өмнө эрх, хууль ёсны ашиг сонирхол нь хөндөгдөж буй этгээдэд сонсох ажиллагаа хийх үүрэгтэй."
+        law: "Захиргааны ерөнхий хууль (ЗЕХ) нь захиргааны акт гаргах, өөрчлөх, хүчингүй болгохын өмнө тухайн шийдвэрт нөлөөлөх нөхцөл байдлын талаар эрх, хууль ёсны ашиг сонирхол нь хөндөгдөж буй этгээдэд мэдэгдэж, тайлбар, санал авах сонсох ажиллагааг зохицуулдаг.",
+        detail: "Захиргааны хэрэг шүүхэд хянан шийдвэрлэх тухай хууль (ЗХШХШТХ)-ийн дагуу хууль бус бөгөөд иргэний эрх, хууль ёсны ашиг сонирхлыг зөрчсөн захиргааны актыг хүчингүй болгуулах нэхэмжлэл гаргах эрхтэй. Сонсох ажиллагаа хийгээгүй нь эрх зүйн дүгнэлтэд хэрхэн нөлөөлснийг хэргийн бүх нөхцөл байдалтай уялдуулан шүүх үнэлнэ."
       },
       {
         level: "Дунд түвшин",
         title: "Тусгай зөвшөөрөл олгох хугацаанд шийдвэр гаргаагүй эс үйлдэхүй",
-        situation: "ХХК тусгай зөвшөөрөл хүсэх бүрэн баримт бичгийг хуульд заасан журмаар яаманд хүргүүлсэн боловч холбогдох хугацаа өнгөрөхөд ямар ч хариу, шийдвэр гаргаагүй байна.",
+        situation: "ХХК тусгай зөвшөөрөл хүсэх бүрэн баримт бичгийг хуульд заасан шаардлагад нийцүүлэн холбогдох яаманд хүргүүлсэн боловч тогтоосон хугацаа өнгөрөхөд ямар ч хариу, шийдвэр гаргаагүй байна. Компанийн үйл ажиллагаа саатаж байна.",
         options: [
-          "Хугацаанд нь шийдвэр гаргаагүй нь захиргааны байгууллагын хууль бус эс үйлдэхүй болно.",
-          "Хариу өгөөгүй бол автоматаар татгалзсан акт гарсанд тооцно.",
-          "Зөвхөн дээд шатны албан тушаалтанд гомдол гаргахаас өөр аргагүй."
+          "Хуульд заасан хугацаанд шийдвэр гаргаагүй нь захиргааны байгууллагын хууль бус эс үйлдэхүй болох тул эс үйлдэхүйг хууль бус болохыг тогтоолгох, зохих акт гаргахыг даалгах нэхэмжлэл гаргах үндэслэлтэй.",
+          "Захиргааны байгууллага хариу өгөөгүй бол хуулийн дагуу автоматаар зөвшөөрөл олгогдсонд тооцно.",
+          "Хугацаа хэтэрсэн тохиолдолд шүүхэд хандах боломжгүй бөгөөд зөвхөн хүлээх ёстой."
         ],
         correct: 0,
-        law: "ЗХШХШТХ болон ЗЕХ: Захиргааны байгууллага хуульд заасан хугацаанд чиг үүргээ хэрэгжүүлж шийдвэр гаргаагүй бол эс үйлдэхүйг хууль бус болохыг тогтоолгох, зохих акт гаргахыг даалгах нэхэмжлэл гаргах үндэслэлтэй."
+        law: "ЗЕХ-ийн дагуу захиргааны байгууллага өргөдөл, хүсэлтийг хүлээн авсан бол хууль тогтоомжид заасан хугацаанд хянаж шийдвэр гаргах үүрэгтэй бөгөөд үүргээ хэрэгжүүлээгүй байдал нь эс үйлдэхүйн хэлбэрээр илэрнэ.",
+        detail: "ЗХШХШТХ-д заасны дагуу захиргааны байгууллагын хууль бус эс үйлдэхүйн улмаас эрх, хууль ёсны ашиг сонирхол нь зөрчигдсөн этгээд тухайн эс үйлдэхүйг хууль бус болохыг тогтоолгох болон хуульд нийцсэн захиргааны акт гаргахыг даалгах нэхэмжлэл гаргаж болно."
       },
       {
         level: "Ахисан түвшин",
         title: "Эрх хэмжээ хэтрүүлсэн албан тушаалтны гаргасан торгуулийн акт",
-        situation: "Агентлагийн мэргэжилтэн хуулиар өөрт олгогдоогүй бүрэн эрхийн хүрээнд аж ахуйн нэгжид торгууль ногдуулах шийдвэр гаргажээ.",
+        situation: "Төрийн захиргааны байгууллагын мэргэжилтэн холбогдох хуулиар өөрт олгогдоогүй бүрэн эрхийн хүрээнд аж ахуйн нэгжид торгууль ногдуулах захиргааны акт гаргажээ. Аж ахуйн нэгж уг шийдвэрийн эрх зүйн хүчинтэй байдалд эргэлзэж байна.",
         options: [
-          "Эрх хэмжээ хэтрүүлэн гаргасан зарим акт нь илт хууль бус захиргааны актын шинжийг агуулж болно.",
-          "Албан тушаалтны гарын үсэг байгаа л бол акт үргэлж хүчин төгөлдөр байна.",
-          "Торгуулийн хэмжээ бага бол эрх хэмжээ хэтрүүлснийг авч үзэхгүй."
+          "Эрх олгогдоогүй буюу эрх хэмжээг илт хэтрүүлэн гаргасан зарим захиргааны акт нь илт хууль бус актын шинжийг агуулж болох ба хуулийн зохицуулалт, нөхцөл байдлыг нарийвчлан шалгана.",
+          "Албан тушаалтан тамга тэмдэг дарсан л бол бүрэн эрхтэй эсэхээс үл хамааран акт хүчин төгөлдөр хэвээр байна.",
+          "Торгуулийн хэмжээ нь бага бол эрх хэмжээ хэтрүүлсэн эсэхийг эрх зүйн хувьд авч үзэхгүй."
         ],
         correct: 0,
-        law: "ЗЕХ болон ЗХШХШТХ: Эрх хэмжээг илт хэтрүүлсэн эсхүл эрх олгогдоогүй этгээд гаргасан актын эрх зүйн үр дагавар, хүчинтэй эсэхийг хуулийн заалт, нөхцөл байдалтай харьцуулан нарийвчлан шалгана."
+        law: "ЗЕХ-д захиргааны актын хууль зүйн хүчин төгөлдөр байдал, мөн хууль бус болон илт хууль бус захиргааны актын ялгаа, эрх хэмжээ хэтрүүлэхтэй холбоотой эрх зүйн үр дагаврыг нарийвчлан зохицуулдаг.",
+        detail: "ЗХШХШТХ-ийн хүрээнд шүүх захиргааны актыг гаргасан этгээд эрх зүйн чадамж, бүрэн эрх, харьяаллын дагуу шийдвэр гаргасан эсэх, мөн эрх зүйн зөрчил нь актыг хүчингүй болгох эсэхэд хэрхэн нөлөөлөхийг хуульд заасан журмаар хянан шийдвэрлэнэ."
       }
     ];
 
@@ -354,181 +376,35 @@
         options: [
           "Захиргааны акт гаргахаас татгалзсаныг маргах",
           "Захиргааны актыг хүчингүй болгуулах нэхэмжлэл",
-          "Гэрээний үүргийн маргаан"
+          "Иргэний эрх зүйн гэрээний үүргийн маргаан"
         ],
         correct: 1,
-        law: "ЗХШХШТХ: Захиргааны хууль бус актын улмаас эрх, хууль ёсны ашиг сонирхол нь зөрчигдсөн этгээд тухайн актыг хүчингүй болгуулах нэхэмжлэл гаргана."
+        law: "ЗХШХШТХ: Хууль бус захиргааны актын улмаас эрх, хууль ёсны ашиг сонирхол нь зөрчигдсөн этгээд уг актыг хүчингүй болгуулах нэхэмжлэл гаргана.",
+        detail: "Хэрэв акт хэдийн гарчихсан бөгөөд түүний эрх зүйн үйлчлэлийг зогсоож, зөрчигдсөн эрхийг сэргээх шаардлагатай бол хүчингүй болгуулах нэхэмжлэлийн төрөлд хамаарна."
       },
       {
-        q: "2. Сонсох ажиллагааны үндсэн зорилго юу вэ?",
+        q: "2. Сонсох ажиллагааны үндсэн эрх зүйн зорилго юу вэ?",
         options: [
-          "Зөвхөн архивын бүртгэл хөтлөх",
+          "Зөвхөн бичиг баримтын бүртгэл хөтлөх",
           "Тухайн асуудлаар гаргах шийдвэрт нөлөөлөх нөхцөл байдлын талаар этгээдийн тайлбар, саналыг сонсох",
-          "Шүүхийн хэлэлцүүлгийг орлох"
+          "Шүүхийн хэлэлцүүлгийг бүрэн орлох"
         ],
         correct: 1,
-        law: "ЗЕХ: Захиргааны шийдвэр гаргахаас өмнө холбогдох этгээдэд өөрийн байр суурь, нотлох баримтаа илэрхийлэх боломж олгох нь хууль ёсны шийдвэр гаргах чухал баталгаа юм."
+        law: "ЗЕХ: Захиргааны акт гаргахын өмнө тухайн асуудалд хамаарах бодит нөхцөл байдлыг зөв тогтоохын тулд оролцогчийн тайлбар, санал, нотлох баримтыг сонсох зорилготой.",
+        detail: "Сонсох ажиллагаа нь захиргааны байгууллагыг бодит нөхцөл байдалд тулгуурлан, эрх зүйн хувьд үндэслэл бүхий шийдвэр гаргахад чиглэдэг чухал процедурын баталгаа юм."
       },
       {
         q: "3. Захиргааны байгууллагын эс үйлдэхүй гэдэгт юу ойлгогдох вэ?",
         options: [
-          "Хууль, захиргааны актаар хүлээсэн үүргээ хугацаанд нь биелүүлээгүй байдал",
+          "Хууль болон захиргааны актаар хүлээсэн чиг үүрэг, шийдвэр гаргах үүргээ хугацаанд нь биелүүлээгүй байдал",
           "Иргэн шүүхэд нэхэмжлэл гаргаагүй байдал",
-          "Хууль тогтоомж шинэчлэгдсэн байдал"
+          "УИХ-аас шинэ хууль баталсан байдал"
         ],
         correct: 0,
-        law: "ЗХШХШТХ: Захиргааны байгууллага хуулиар хүлээсэн чиг үүргээ хэрэгжүүлэхгүй буюу шийдвэр гаргахгүй хугацаа хэтрүүлсэн тохиолдолд эс үйлдэхүйн асуудал яригдана."
-      }
-    ];
-
-    let currentCaseIdx = 0;
-    let currentQuizIdx = 0;
-    let caseSolved = new Set();
-    let quizCorrect = new Set();
-
-    function switchTab(tab) {
-      document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === tab));
-      ["dashboard", "cases", "quiz", "summary"].forEach(id => {
-        document.getElementById("tab-" + id).classList.toggle("hidden", id !== tab);
-      });
-      if (tab === "cases") renderCase();
-      if (tab === "quiz") renderQuiz();
-      if (tab === "summary") renderSummary();
-    }
-
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-      btn.addEventListener("click", () => switchTab(btn.dataset.tab));
-    });
-
-    function startCase(idx) {
-      currentCaseIdx = idx;
-      switchTab("cases");
-    }
-
-    function renderCase() {
-      const item = casesData[currentCaseIdx];
-      const box = document.getElementById("case-box");
-      box.innerHTML = `
-        <div>
-          <span class="badge">${item.level} • Кейс ${currentCaseIdx + 1}/${casesData.length}</span>
-          <h3>${item.title}</h3>
-          <p style="margin-top:8px;color:var(--text);">${item.situation}</p>
-          <div class="options" id="case-options">
-            ${item.options.map((opt, i) => `
-              <button class="option-btn" onclick="answerCase(${i})">${opt}</button>
-            `).join("")}
-          </div>
-          <div id="case-feedback"></div>
-        </div>
-        <div class="actions-row">
-          <button class="btn btn-secondary" onclick="prevCase()">Өмнөх</button>
-          <button class="btn btn-primary" onclick="nextCase()">Дараагийн кейс</button>
-        </div>
-      `;
-    }
-
-    function answerCase(choiceIdx) {
-      const item = casesData[currentCaseIdx];
-      const btns = document.querySelectorAll("#case-options .option-btn");
-      btns.forEach((b, i) => {
-        b.disabled = true;
-        if (i === item.correct) b.classList.add("correct");
-        else if (i === choiceIdx) b.classList.add("wrong");
-      });
-      if (choiceIdx === item.correct) caseSolved.add(currentCaseIdx);
-      updateStats();
-
-      document.getElementById("case-feedback").innerHTML = `
-        <div class="callout">
-          <strong>${choiceIdx === item.correct ? "Зөв дүгнэлт" : "Хуулийн зохицуулалтын тайлбар"}</strong>
-          ${item.law}
-        </div>
-      `;
-    }
-
-    function prevCase() {
-      currentCaseIdx = (currentCaseIdx - 1 + casesData.length) % casesData.length;
-      renderCase();
-    }
-
-    function nextCase() {
-      currentCaseIdx = (currentCaseIdx + 1) % casesData.length;
-      renderCase();
-    }
-
-    function renderQuiz() {
-      const item = quizData[currentQuizIdx];
-      const box = document.getElementById("quiz-box");
-      box.innerHTML = `
-        <div>
-          <span class="badge">Сорил • Асуулт ${currentQuizIdx + 1}/${quizData.length}</span>
-          <h3>${item.q}</h3>
-          <div class="options" id="quiz-options">
-            ${item.options.map((opt, i) => `
-              <button class="option-btn" onclick="answerQuiz(${i})">${opt}</button>
-            `).join("")}
-          </div>
-          <div id="quiz-feedback"></div>
-        </div>
-        <div class="actions-row">
-          <button class="btn btn-secondary" onclick="prevQuiz()">Өмнөх</button>
-          <button class="btn btn-primary" onclick="nextQuiz()">Дараагийн асуулт</button>
-        </div>
-      `;
-    }
-
-    function answerQuiz(choiceIdx) {
-      const item = quizData[currentQuizIdx];
-      const btns = document.querySelectorAll("#quiz-options .option-btn");
-      btns.forEach((b, i) => {
-        b.disabled = true;
-        if (i === item.correct) b.classList.add("correct");
-        else if (i === choiceIdx) b.classList.add("wrong");
-      });
-      if (choiceIdx === item.correct) quizCorrect.add(currentQuizIdx);
-      updateStats();
-
-      document.getElementById("quiz-feedback").innerHTML = `
-        <div class="callout">
-          <strong>${choiceIdx === item.correct ? "Зөв хариулт" : "Тайлбар"}</strong>
-          ${item.law}
-        </div>
-      `;
-    }
-
-    function prevQuiz() {
-      currentQuizIdx = (currentQuizIdx - 1 + quizData.length) % quizData.length;
-      renderQuiz();
-    }
-
-    function nextQuiz() {
-      currentQuizIdx = (currentQuizIdx + 1) % quizData.length;
-      renderQuiz();
-    }
-
-    function updateStats() {
-      document.getElementById("stat-cases").textContent = `Кейс: ${caseSolved.size}/${casesData.length}`;
-      document.getElementById("stat-quiz").textContent = `Сорил: ${quizCorrect.size}/${quizData.length}`;
-    }
-
-    function renderSummary() {
-      const total = casesData.length + quizData.length;
-      const done = caseSolved.size + quizCorrect.size;
-      const pct = Math.round((done / total) * 100);
-      document.getElementById("score-ring").style.setProperty("--pct", pct + "%");
-      document.getElementById("score-pct").textContent = pct + "%";
-      document.getElementById("summary-text").textContent =
-        `Та нийт ${total} даалгавраас ${done} амжилттай гүйцэтгэлээ (Кейс: ${caseSolved.size}/${casesData.length}, Сорил: ${quizCorrect.size}/${quizData.length}).`;
-    }
-
-    function resetProgress() {
-      caseSolved.clear();
-      quizCorrect.clear();
-      updateStats();
-      renderSummary();
-    }
-
-    updateStats();
-  </script>
-</body>
-</html>
+        law: "ЗЕХ ба ЗХШХШТХ: Захиргааны байгууллага эрх зүйн актаар хүлээсэн чиг үүргээ хэрэгжүүлэхгүй буюу зохих шийдвэр гаргахгүй хугацаа хэтрүүлсэн нь эс үйлдэхүй болно.",
+        detail: "Эс үйлдэхүйн маргаан нь байгууллага ямар нэг идэвхтэй акт гаргалгүй зогссон тохиолдолд үүсэх бөгөөд хууль бус эс үйлдэхүйг тогтоолгох, акт гаргахыг даалгах боломжтой."
+      },
+      {
+        q: "4. Захиргааны акт хүчингүй болсон тохиолдолд эрх зүйн ямар үр дагавар үүсэх вэ?",
+        options: [
+          "Хууль бус актын эрх зүйн үйл
